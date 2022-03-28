@@ -1,0 +1,70 @@
+﻿<Window x:Class="Transport.TestReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Transport"
+        mc:Ignorable="d"
+        Title="Тест" Height="650" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFA8A8A8">
+
+        <Grid Height="80" VerticalAlignment="Top" >
+            <Grid.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="Resourses/vopr.jpg"/>
+            </Grid.Background>
+
+            <TextBlock FontFamily="Sans" FontSize="30" HorizontalAlignment="Center" Margin="0,20,0,20" Foreground="White" >
+                    Отчет по тестированию
+            </TextBlock>
+        </Grid>
+        <Grid Margin="0,80,0,0">
+            <ScrollViewer>
+                <ScrollViewer.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="Resourses/fon.png"/>
+                </ScrollViewer.Background>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock x:Name="txtFIO"  FontFamily="Times New Roman" FontSize="20" Margin="30,30,30,0" TextWrapping="Wrap">
+                            Студент: Будилин Никита Андреевич
+                            <LineBreak/>
+                            Группа: 4ПКС-116
+                            <LineBreak/>
+                            Количество баллов: 26
+                    </TextBlock>
+                    <TextBlock  FontFamily="Times New Roman" FontSize="20" Margin="30,20,30,0" TextWrapping="Wrap" FontWeight="Bold" HorizontalAlignment="Center">
+                            Ваша оценка:
+                    </TextBlock>
+                    <TextBlock x:Name="txtMark"  FontFamily="Times New Roman" FontSize="20" Margin="30,20,30,0" TextWrapping="Wrap" FontWeight="Bold" HorizontalAlignment="Center">
+                            5 (отлично)
+                    </TextBlock>
+
+                    <TextBlock x:Name="txtQuestions" FontFamily="Times New Roman" FontSize="20" Margin="30,30,30,0" TextWrapping="Wrap">
+                            Ваши ответы:
+                            <LineBreak/>
+                    </TextBlock>
+                  
+                    <TextBlock x:Name="txtQuestion_5" FontFamily="Times New Roman" FontSize="20" Margin="30,30,30,0" TextWrapping="Wrap">
+
+                    </TextBlock>
+
+                    <TextBlock x:Name="txtQuestion_6_1" FontFamily="Times New Roman" FontSize="20" Margin="30,30,30,0" TextWrapping="Wrap">
+
+                    </TextBlock>
+                    <DataGrid x:Name="gridQuestion_6" Margin="30,30,30,0" IsEnabled="False" HeadersVisibility="None" FontFamily="Times New Roman" FontSize="20" CanUserReorderColumns="False" CanUserSortColumns="False" MaxColumnWidth="70" MinColumnWidth="50" HorizontalAlignment="Left" CanUserAddRows="False" ColumnWidth="50">
+                    </DataGrid>
+             
+              
+                    <Button FontFamily="Sans" FontSize="30" Height="60" Width="366"  Foreground="White" Margin="30,40,30,0" Content="Завершить тестирование" HorizontalAlignment="Center" Click="Button_Click">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+
+                    </Button>
+                    <TextBlock>
+                            <LineBreak/><LineBreak/>
+                    </TextBlock>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+    </Grid>
+</Window>

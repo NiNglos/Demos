@@ -1,0 +1,847 @@
+﻿<Window x:Class="Transport.Practice_Dobr"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Transport"
+        mc:Ignorable="d"
+        Title="Практика. Метод добротностей" Height="900" Width="1600" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFFFF3DA">
+        
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="65*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Border BorderBrush="White" BorderThickness="0,0,1,0"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="60,50,60,0">
+                            Метод добротностей
+                    </TextBlock>
+                    <TextBlock FontSize="22" FontFamily="Sans" Margin="60,30,30,0" TextWrapping="Wrap">
+                            Дана матрица стоимостей перевозки:
+                    </TextBlock>
+                    <DataGrid x:Name="gridExample" Margin="60,20,30,0" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" IsEnabled="False" HorizontalAlignment="Left" ColumnWidth="50">
+
+                    </DataGrid>
+                    <TextBlock FontSize="22" FontFamily="Sans" Margin="60,30,30,0" TextWrapping="Wrap">
+                            Матрица перевозки (опорный план) :
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <DataGrid x:Name="gridAnswer" Margin="60,20,20,0" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                        </DataGrid>
+                        <DataGrid x:Name="gridResourses" Margin="0,20,30,0" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                        </DataGrid>
+                    </StackPanel>
+                    <DataGrid x:Name="gridNeeds" Margin="60,20,30,70" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                    </DataGrid>
+                    <Button FontFamily="Sans" FontSize="30" Height="60" Width="250" BorderBrush="#FFD6280E" Foreground="White"  Content="← В главное меню" Margin="60,30,30,50" HorizontalAlignment="Left" Click="Button_Click" >
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FF82B7AD"/>
+                                <GradientStop Color="#FFFFE4AD" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid x:Name="txtStep1_1" Visibility="Visible">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 1
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                Решение транспортной задачи всегда начинается с выяснения вопроса, является ли транспортная задача сбалансированной. 
+                                <LineBreak/><LineBreak/>Для этого мы рассчитаем количество потребностей у всех потребителей и количество запасов у всех поставщиков. Заполните следующие поля и 
+                                нажмите ОК. Если у вас возникли трудности, ознакомьтесь с Теоретической справкой.
+                                <LineBreak/>
+                                Потребности:
+                                <TextBox x:Name="txtNeeds" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>
+                                Запасы:
+                                <TextBox x:Name="txtResources" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtResources_PreviewTextInput">
+
+                                </TextBox>
+                            </TextBlock>
+                            <Button x:Name="btnStep1Ok" Width="100" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="20" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep1Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep1Theory" Foreground="#FF306D72" Click="HplStep1Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep1Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Чтобы рассчитать общее количество потребностей нужно сложить потребности всех потребителей. Потребности всех потребителей указаны в матрицестоимостей перевозки в последней строке.
+                                    <LineBreak/><LineBreak/>Чтобы рассчитать общее количество запасов нужно сложить запасы всех поставщиков. Запасы всех поставщиков указаны в матрицестоимостей перевозки в последнем столбце.
+                                    <LineBreak/><Image Height="210" Source="Resourses/Practice/practice_sz_1.png" Margin="0,10,0,10" ></Image>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep1_2" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 1
+                            </TextBlock>
+                            <TextBlock x:Name="txt_s1" FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Верно рассчитав общее количество потребностей и запасов, теперь вы можете ответить на следующий вопрос: является ли данная транспортная задача сбалансированной?                       
+                            </TextBlock>
+                            <RadioButton x:Name="rbt1" Margin="30,10,30,0" FontFamily="Sans" FontSize="22">
+                                Нет, не является
+                            </RadioButton>
+                            <RadioButton x:Name="rbt2" Margin="30,10,30,0" FontFamily="Sans" FontSize="22">
+                                Да, является
+                            </RadioButton>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                Если вы испытываете трудности при выборе ответа, воспользуйтесь Теоретической справкой. После того как ответите, нажмите кнопку «Перейти к следующему шагу».
+                            </TextBlock>
+                            <Button x:Name="btnStep1_1Ok" Width="250" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep1_1Ok_Click"  >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    Перейти к следующему шагу
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep1_2_Theory" Foreground="#FF306D72" Click="HplStep1_2_Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep1_2_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Сбалансированной транспортная задача является в том случае, если количество запасов продукции равно суммарной потребности в ней.
+                                    <LineBreak/><LineBreak/>Несбалансированной же задача называется, если количество запасов продукции не равно суммарной потребности в ней.
+                                    <LineBreak/><LineBreak/>Проще говоря если высчитанное вами общее количество запасов равно общему количеству потребностей, то данная транспортная задача сбалансирована, иначе несбалансированная.
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep2" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 2
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Так как наша задача сбалансирована, то нам не нужно проводить процедуру закрытия задачи, это значит, что мы можем перейти непосредственно к решению задачи методом добротностей.
+                                Начинаем строить опорный план.
+                                <LineBreak/>
+                                <DataGrid x:Name="gridStep2" Margin="0,20" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                                </DataGrid>
+                                <LineBreak/>Находим минимальные элементы в строках. Если таких элементов несколько, напишите любой из них.
+                                <LineBreak/><LineBreak/>Минимальный элемент в 1 строке: С 
+                                <TextBox x:Name="txtI_1" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txtJ_1" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 2 строке: С 
+                                <TextBox x:Name="txtI_2" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txtJ_2" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 3 строке: С 
+                                <TextBox x:Name="txtI_3" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txtJ_3" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+
+                                <LineBreak/><LineBreak/>Заполните все поля и нажмите ОК.Если у вас возникли трудности, обратитесь к Теоретической справки.
+                            </TextBlock>
+                            <Button x:Name="btnStep2_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep2_Ok_Click"  >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="gridS_2" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,10,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Мы вычли минимальные элементы из строк, теперь находим минимальные элементы в столбцах. Если таких элементов несколько, напишите любой из них.
+                                <LineBreak/>
+                                <DataGrid x:Name="gridStep2_2" Margin="0,20,0,0" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                                </DataGrid>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 1 столбце: С 
+                                <TextBox x:Name="txtI2_1" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txtJ2_1" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 2 столбце: С 
+                                <TextBox x:Name="txtI2_2" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txtJ2_2" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 3 столбце: С 
+                                <TextBox x:Name="txtI2_3" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txtJ2_3" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 4 столбце: С 
+                                <TextBox x:Name="txtI2_4" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txtJ2_4" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+
+                                <LineBreak/><LineBreak/>Заполните все поля и нажмите ОК.Если у вас возникли трудности, обратитесь к Теоретической справки.
+                            </TextBlock>
+                            <Button x:Name="btnStep2_1Ok" Visibility="Collapsed" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep2_1Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep2_Theory" Foreground="#FF306D72" Click="HplStep2_Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep2_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Условия задачи заданы матрицей стоимостей:
+                                    <LineBreak/><Image Source="Resourses/4-2.png" Margin="0,0" Height="135"/>
+                                    <LineBreak/><LineBreak/>Находим минимальный элемент в каждой строке и вычитаем его из всех остальных элементов данной строки. В 1 строке – это с₁₂ равный 5, в 2 – с₂₄ равный 2, в 3 – с₃₂ равный 1.
+                                    <LineBreak/><LineBreak/><Image Source="Resourses/d_1.png" Margin="0,0" Height="135"/>
+                                    <LineBreak/><LineBreak/>Находим минимальный элемент в каждом столбце и вычитаем его из всех остальных элементов данного столбца. В 1 столбце – это с₁₁ или с₂₁ равный 1 (нет разницы какой из них вычитать, ответ получится таким же), в 2 – с₁₂ или с₃₂ равный 0, в 3 – с₂₃ или с₃₃ равный 2, в 4 – с₂₄ равный 0.
+                                    <LineBreak/><LineBreak/><Image Source="Resourses/d_2.png" Margin="0,0" Height="135"/>
+                                    <LineBreak/>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep4" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 2
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Мы вычли минимальные элементы из столбцов и получили следующую матрицу. 
+                                <LineBreak/>
+                                <DataGrid x:Name="gridStep4" Margin="0,20,0,0" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                                </DataGrid>
+                                <LineBreak/><LineBreak/>Начинаем высчитывать добротности.
+                                <LineBreak/>Добротность 1 строки:
+                                <TextBox x:Name="txtD_I_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <LineBreak/>Добротность 2 строки:
+                                <TextBox x:Name="txtD_I_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                <LineBreak/>Добротность 3 строки:
+                                <TextBox x:Name="txtD_I_3" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                <LineBreak/>Добротность 1 столбца:
+                                <TextBox x:Name="txtD_J_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                <LineBreak/>Добротность 2 столбца:
+                                <TextBox x:Name="txtD_J_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                <LineBreak/>Добротность 3 столбца:
+                                <TextBox x:Name="txtD_J_3" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                <LineBreak/>Добротность 4 столбца:
+                                <TextBox x:Name="txtD_J_4" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                
+                                <LineBreak/><LineBreak/>Заполните все поля и нажмите ОК. Если у вас возникли трудности, обратитесь к Теоретической справки.
+                            </TextBlock>
+                            <Button x:Name="btnStep4_Ok"  Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep4_Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="gridDobr_1" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,0,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                               Максимальная добротность равна:
+                                <TextBox x:Name="txtD_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                
+                                <LineBreak/><LineBreak/>Заполните поле и нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep4_2Ok" Visibility="Collapsed" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep4_2Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep4_Theory" Foreground="#FF306D72" Click="HplStep4_Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep4_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Начинаем высчитывать добротности по строкам и столбцам.
+                                    <LineBreak/><LineBreak/>Для первой строки находим два минимальных элемента – равные 0 и 0 соответственно, находим их сумму – 0+0=0, умножаем полученный результат на запасы в этой строке – 0×14 = 0. Полученное число и есть добротность первой строки.
+                                    <LineBreak/><LineBreak/>Для всех остальных строк делаем тоже самое. В столбцах находим добротности по тому же принципу, только умножаем на потребности в этом столбце.
+                                    <LineBreak/><LineBreak/>Выписываем все добротности рядом со столбцом/строкой, к которой он относится, как показано ниже:
+                                    <LineBreak/><LineBreak/>
+                                    <Image Source="Resourses/d_3.png" Margin="0,0" Height="170"/>
+                                    <LineBreak/>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep5" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 2
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Image Source="Resourses/Practice/dobr_1.png" Margin="0,0" Height="170"/>
+                                <LineBreak/><LineBreak/>Максимальная добротность равна 56 и она у нас получилась в столбце 1 и строке 3. Нам нужно выбрать либо столбец 1, либо строку 3 для первого назначения ресурсов. 
+                                <LineBreak/><LineBreak/>Ресурсы мы должны распределять для элемента, который равен нулю. У нас в столбце 1 и строке 3 таких элементов всего два. Выбираем тот, чья стоимость в матрице стоимостей перевозки наименьшая.
+                                <LineBreak/><LineBreak/>Мы будем рассматривать ячейку Х 
+                                <TextBox x:Name="txtI_S5" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <TextBox x:Name="txtJ_S5" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>Запасы в этой ячейке равны 
+                                <TextBox x:Name="txtResourses_S5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>Потребности в этой ячейке равны 
+                                <TextBox x:Name="txtNeeds_S5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>Количество ресурсов, которые мы распределим в эту ячейку: 
+                                <TextBox x:Name="txtAll_S5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/><LineBreak/>Заполните все поля и нажмите ОК. Если у вас возникли трудности, обратитесь к Теоретической справки.
+                            </TextBlock>
+                            <Button x:Name="btnStep5_Ok"  Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep5_Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep5_Theory" Foreground="#FF306D72" Click="HplStep5_Theory_Click">+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep5_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Чтобы найти самую маленькую стоимость перевозки нужно в матрице стоимостей перевозки среди всех стоимостей отыскать наименьшую. 
+                                    <LineBreak/><Image Height="205" Source="Resourses/Practice/practice_min_1.png" Margin="0,20,0,10" ></Image>
+                                    <LineBreak/><LineBreak/>Для того, чтобы распределить ресурсы для ячейки, мы должны понять, какими запасами обладает поставщик и какие потребности потребителя надо удовлетворить.
+                                    <LineBreak/><Image Height="250" Source="Resourses/Practice/practice_sz_2.png" Margin="0,20,0,10" ></Image>
+                                    <LineBreak/><LineBreak/>Для того, чтобы распределить ресурсы для ячейки, мы должны назначить такое максимально возможное количество ресурсов, равное минимальному числу из 
+                                    потребности и запаса. Ведь мы не можем назначить ресурсов больше, чем надо потребителю или больше, чем есть у поставщика. Поэтому из данных чисел, количество запасов и 
+                                    количество потребностей в данной ячейке, мы выбираем минимальное.
+                                    <LineBreak/><Image Height="250" Source="Resourses/Practice/practice_sz_3.png" Margin="0,20,0,10" ></Image>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep6" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 2
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Вы верно рассчитали все параметры, программа автоматически записывает ответ в матрицу перевозок. В левой части окна мы можете заметить, что ресурс назначен. 
+                                <LineBreak/><LineBreak/>Распределив ресурсы, мы должны не забывать, что теперь у нас у поставщика и потребителя для данной ячейки изменилось количество запасов и потребностей соответственно. Оставшееся количество для удобства записано слева и снизу от матрицы перевозки. 
+                                <LineBreak/><LineBreak/>Каждый раз распределяя ресурсы нужно не забывать, что для каких-то поставщиков или потребителей количество запасов или потребностей может стать меньше, чем было в самом начале. 
+                                <LineBreak/><LineBreak/>Нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep6_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep6_Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+
+                <Grid x:Name="txtStep7" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 3
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Мы вычеркнули из матрицы 1 строку, ее мы больше рассматривать не будем.
+                                <LineBreak/>
+                                <DataGrid x:Name="gridStep7" Margin="0,20,0,20" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                                </DataGrid>
+                                <LineBreak/>Находим минимальные элементы в строках. Если таких элементов несколько, напишите любой из них.
+                                <LineBreak/><LineBreak/>Минимальный элемент в 2 строке: С 
+                                <TextBox x:Name="txt2I_2" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txt2J_2" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 3 строке: С 
+                                <TextBox x:Name="txt2I_3" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txt2J_3" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+
+                                <LineBreak/><LineBreak/>Заполните все поля и нажмите ОК.Если у вас возникли трудности, обратитесь к Теоретической справки.
+                            </TextBlock>
+                            <Button x:Name="btnStep7_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep7_Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="gridS_7" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,10,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Мы вычли минимальные элементы из строк, теперь находим минимальные элементы в столбцах. Если таких элементов несколько, напишите любой из них.
+                                <LineBreak/>
+                                <DataGrid x:Name="gridStep7_2" Margin="0,20,0,0" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                                </DataGrid>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 1 столбце: С 
+                                <TextBox x:Name="txt2I2_1" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txt2J2_1" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 2 столбце: С 
+                                <TextBox x:Name="txt2I2_2" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txt2J2_2" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 3 столбце: С 
+                                <TextBox x:Name="txt2I2_3" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txt2J2_3" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 4 столбце: С 
+                                <TextBox x:Name="txt2I2_4" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txt2J2_4" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+
+                                <LineBreak/><LineBreak/>Заполните все поля и нажмите ОК.Если у вас возникли трудности, обратитесь к Теоретической справки.
+                            </TextBlock>
+                            <Button x:Name="btnStep7_1Ok" Visibility="Collapsed" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep7_1Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep7_Theory" Foreground="#FF306D72" Click="HplStep7_Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep7_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Условия задачи заданы матрицей стоимостей:
+                                    <LineBreak/><Image Source="Resourses/4-2.png" Margin="0,0" Height="135"/>
+                                    <LineBreak/><LineBreak/>Находим минимальный элемент в каждой строке и вычитаем его из всех остальных элементов данной строки. В 1 строке – это с₁₂ равный 5, в 2 – с₂₄ равный 2, в 3 – с₃₂ равный 1.
+                                    <LineBreak/><LineBreak/><Image Source="Resourses/d_1.png" Margin="0,0" Height="135"/>
+                                    <LineBreak/><LineBreak/>Находим минимальный элемент в каждом столбце и вычитаем его из всех остальных элементов данного столбца. В 1 столбце – это с₁₁ или с₂₁ равный 1 (нет разницы какой из них вычитать, ответ получится таким же), в 2 – с₁₂ или с₃₂ равный 0, в 3 – с₂₃ или с₃₃ равный 2, в 4 – с₂₄ равный 0.
+                                    <LineBreak/><LineBreak/><Image Source="Resourses/d_2.png" Margin="0,0" Height="135"/>
+                                    <LineBreak/>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep8" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 3
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Мы вычли минимальные элементы из столбцов и получили следующую матрицу. 
+                                <LineBreak/>
+                                <DataGrid x:Name="gridStep8" Margin="0,20,0,0" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                                </DataGrid>
+                                <LineBreak/><LineBreak/>Начинаем высчитывать добротности.
+                                <LineBreak/>Добротность 2 строки:
+                                <TextBox x:Name="txt2D_I_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                <LineBreak/>Добротность 3 строки:
+                                <TextBox x:Name="txt2D_I_3" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                <LineBreak/>Добротность 1 столбца:
+                                <TextBox x:Name="txt2D_J_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                <LineBreak/>Добротность 2 столбца:
+                                <TextBox x:Name="txt2D_J_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                <LineBreak/>Добротность 3 столбца:
+                                <TextBox x:Name="txt2D_J_3" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                <LineBreak/>Добротность 4 столбца:
+                                <TextBox x:Name="txt2D_J_4" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                
+                                <LineBreak/><LineBreak/>Заполните все поля и нажмите ОК. Если у вас возникли трудности, обратитесь к Теоретической справки.
+                            </TextBlock>
+                            <Button x:Name="btnStep8_Ok"  Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep8_Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="grid2Dobr_1" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,0,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                               Максимальная добротность равна:
+                                <TextBox x:Name="txt2D_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                
+                                <LineBreak/><LineBreak/>Заполните поле и нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep8_2Ok" Visibility="Collapsed" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep8_2Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep8_Theory" Foreground="#FF306D72" Click="HplStep8_Theory_Click">+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep8_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Начинаем высчитывать добротности по строкам и столбцам.
+                                    <LineBreak/><LineBreak/>Для первой строки находим два минимальных элемента – равные 0 и 0 соответственно, находим их сумму – 0+0=0, умножаем полученный результат на запасы в этой строке – 0×14 = 0. Полученное число и есть добротность первой строки.
+                                    <LineBreak/><LineBreak/>Для всех остальных строк делаем тоже самое. В столбцах находим добротности по тому же принципу, только умножаем на потребности в этом столбце.
+                                    <LineBreak/><LineBreak/>Выписываем все добротности рядом со столбцом/строкой, к которой он относится, как показано ниже:
+                                    <LineBreak/><LineBreak/>
+                                    <Image Source="Resourses/d_3.png" Margin="0,0" Height="170"/>
+                                    <LineBreak/>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep9" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 3
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Image Source="Resourses/Practice/dobr_2.png" Margin="0,0" Height="170"/>
+                                <LineBreak/><LineBreak/>Максимальная добротность равна 96 и она у нас получилась в столбце 3. 
+                                <LineBreak/><LineBreak/>Ресурсы мы должны распределять для элемента, который равен нулю. 
+                                <LineBreak/><LineBreak/>Мы будем рассматривать ячейку Х 
+                                <TextBox x:Name="txtI_S9" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <TextBox x:Name="txtJ_S9" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>Запасы в этой ячейке равны 
+                                <TextBox x:Name="txtResourses_S9" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>Потребности в этой ячейке равны 
+                                <TextBox x:Name="txtNeeds_S9" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>Количество ресурсов, которые мы распределим в эту ячейку: 
+                                <TextBox x:Name="txtAll_S9" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/><LineBreak/>Заполните все поля и нажмите ОК. Если у вас возникли трудности, обратитесь к Теоретической справки.
+                            </TextBlock>
+                            <Button x:Name="btnStep9_Ok"  Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep9_Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep9_Theory" Foreground="#FF306D72" Click="HplStep9_Theory_Click">+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep9_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Чтобы найти самую маленькую стоимость перевозки нужно в матрице стоимостей перевозки среди всех стоимостей отыскать наименьшую. 
+                                    <LineBreak/><Image Height="205" Source="Resourses/Practice/practice_min_1.png" Margin="0,20,0,10" ></Image>
+                                    <LineBreak/><LineBreak/>Для того, чтобы распределить ресурсы для ячейки, мы должны понять, какими запасами обладает поставщик и какие потребности потребителя надо удовлетворить.
+                                    <LineBreak/><Image Height="250" Source="Resourses/Practice/practice_sz_2.png" Margin="0,20,0,10" ></Image>
+                                    <LineBreak/><LineBreak/>Для того, чтобы распределить ресурсы для ячейки, мы должны назначить такое максимально возможное количество ресурсов, равное минимальному числу из 
+                                    потребности и запаса. Ведь мы не можем назначить ресурсов больше, чем надо потребителю или больше, чем есть у поставщика. Поэтому из данных чисел, количество запасов и 
+                                    количество потребностей в данной ячейке, мы выбираем минимальное.
+                                    <LineBreak/><Image Height="250" Source="Resourses/Practice/practice_sz_3.png" Margin="0,20,0,10" ></Image>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep10" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 3
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Вы верно рассчитали все параметры, программа автоматически записывает ответ в матрицу перевозок. В левой части окна мы можете заметить, что ресурс назначен. 
+                                <LineBreak/><LineBreak/>Распределив ресурсы, мы должны не забывать, что теперь у нас у поставщика и потребителя для данной ячейки изменилось количество запасов и потребностей соответственно. Оставшееся количество для удобства записано слева и снизу от матрицы перевозки. 
+                                <LineBreak/><LineBreak/>Каждый раз распределяя ресурсы нужно не забывать, что для каких-то поставщиков или потребителей количество запасов или потребностей может стать меньше, чем было в самом начале. 
+                                <LineBreak/><LineBreak/>Нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep10_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep10_Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+
+                <Grid x:Name="txtStep11" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 4
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Мы вычеркнули из матрицы 3 столбец, его мы больше рассматривать не будем.
+                                <LineBreak/>
+                                <DataGrid x:Name="gridStep11" Margin="0,20,0,20" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                                </DataGrid>
+                                <LineBreak/>Находим минимальные элементы в строках. Если таких элементов несколько, напишите любой из них.
+                                <LineBreak/><LineBreak/>Минимальный элемент в 2 строке: С 
+                                <TextBox x:Name="txt3I_2" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txt3J_2" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 3 строке: С 
+                                <TextBox x:Name="txt3I_3" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txt3J_3" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+
+                                <LineBreak/><LineBreak/>Заполните все поля и нажмите ОК.Если у вас возникли трудности, обратитесь к Теоретической справки.
+                            </TextBlock>
+                            <Button x:Name="btnStep11_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep11_Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="gridS_11" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,10,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Мы вычли минимальные элементы из строк, теперь находим минимальные элементы в столбцах. Если таких элементов несколько, напишите любой из них.
+                                <LineBreak/>
+                                <DataGrid x:Name="gridStep11_2" Margin="0,20,0,0" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                                </DataGrid>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 1 столбце: С 
+                                <TextBox x:Name="txt3I2_1" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txt3J2_1" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 2 столбце: С 
+                                <TextBox x:Name="txt3I2_2" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txt3J2_2" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <LineBreak/><LineBreak/>Минимальный элемент в 4 столбце: С 
+                                <TextBox x:Name="txt3I2_4" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                <TextBox x:Name="txt3J2_4" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+
+                                <LineBreak/><LineBreak/>Заполните все поля и нажмите ОК.Если у вас возникли трудности, обратитесь к Теоретической справки.
+                            </TextBlock>
+                            <Button x:Name="btnStep11_1Ok" Visibility="Collapsed" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep11_1Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep11_Theory" Foreground="#FF306D72" Click="HplStep11_Theory_Click">+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep11_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Условия задачи заданы матрицей стоимостей:
+                                    <LineBreak/><Image Source="Resourses/4-2.png" Margin="0,0" Height="135"/>
+                                    <LineBreak/><LineBreak/>Находим минимальный элемент в каждой строке и вычитаем его из всех остальных элементов данной строки. В 1 строке – это с₁₂ равный 5, в 2 – с₂₄ равный 2, в 3 – с₃₂ равный 1.
+                                    <LineBreak/><LineBreak/><Image Source="Resourses/d_1.png" Margin="0,0" Height="135"/>
+                                    <LineBreak/><LineBreak/>Находим минимальный элемент в каждом столбце и вычитаем его из всех остальных элементов данного столбца. В 1 столбце – это с₁₁ или с₂₁ равный 1 (нет разницы какой из них вычитать, ответ получится таким же), в 2 – с₁₂ или с₃₂ равный 0, в 3 – с₂₃ или с₃₃ равный 2, в 4 – с₂₄ равный 0.
+                                    <LineBreak/><LineBreak/><Image Source="Resourses/d_2.png" Margin="0,0" Height="135"/>
+                                    <LineBreak/>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep12" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 4
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Мы вычли минимальные элементы из столбцов и получили следующую матрицу. 
+                                <LineBreak/>
+                                <DataGrid x:Name="gridStep12" Margin="0,20,0,0" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                                </DataGrid>
+                                <LineBreak/><LineBreak/>Начинаем высчитывать добротности.
+                                <LineBreak/>Добротность 2 строки:
+                                <TextBox x:Name="txt3D_I_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                <LineBreak/>Добротность 3 строки:
+                                <TextBox x:Name="txt3D_I_3" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                <LineBreak/>Добротность 1 столбца:
+                                <TextBox x:Name="txt3D_J_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                <LineBreak/>Добротность 2 столбца:
+                                <TextBox x:Name="txt3D_J_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                <LineBreak/>Добротность 4 столбца:
+                                <TextBox x:Name="txt3D_J_4" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                
+                                <LineBreak/><LineBreak/>Заполните все поля и нажмите ОК. Если у вас возникли трудности, обратитесь к Теоретической справки.
+                            </TextBlock>
+                            <Button x:Name="btnStep12_Ok"  Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep12_Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="grid3Dobr_1" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,0,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                               Максимальная добротность равна:
+                                <TextBox x:Name="txt3D_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="50" PreviewTextInput="txtResources_PreviewTextInput"/>
+                                
+                                <LineBreak/><LineBreak/>Заполните поле и нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep12_2Ok" Visibility="Collapsed" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep12_2Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep12_Theory" Foreground="#FF306D72" Click="HplStep12_Theory_Click">+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep12_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Начинаем высчитывать добротности по строкам и столбцам.
+                                    <LineBreak/><LineBreak/>Для первой строки находим два минимальных элемента – равные 0 и 0 соответственно, находим их сумму – 0+0=0, умножаем полученный результат на запасы в этой строке – 0×14 = 0. Полученное число и есть добротность первой строки.
+                                    <LineBreak/><LineBreak/>Для всех остальных строк делаем тоже самое. В столбцах находим добротности по тому же принципу, только умножаем на потребности в этом столбце.
+                                    <LineBreak/><LineBreak/>Выписываем все добротности рядом со столбцом/строкой, к которой он относится, как показано ниже:
+                                    <LineBreak/><LineBreak/>
+                                    <Image Source="Resourses/d_3.png" Margin="0,0" Height="170"/>
+                                    <LineBreak/>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep13" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 4
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Image Source="Resourses/Practice/dobr_3.png" Margin="0,0" Height="170"/>
+                                <LineBreak/><LineBreak/>Максимальная добротность равна 38 и она у нас получилась в строке 2. 
+                                <LineBreak/><LineBreak/>Ресурсы мы должны распределять для элемента, который равен нулю. 
+                                <LineBreak/><LineBreak/>Мы будем рассматривать ячейку Х 
+                                <TextBox x:Name="txtI_S13" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <TextBox x:Name="txtJ_S13" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>Запасы в этой ячейке равны 
+                                <TextBox x:Name="txtResourses_S13" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>Потребности в этой ячейке равны 
+                                <TextBox x:Name="txtNeeds_S13" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>Количество ресурсов, которые мы распределим в эту ячейку: 
+                                <TextBox x:Name="txtAll_S13" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/><LineBreak/>Заполните все поля и нажмите ОК. Если у вас возникли трудности, обратитесь к Теоретической справки.
+                            </TextBlock>
+                            <Button x:Name="btnStep13_Ok"  Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep13_Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep13_Theory" Foreground="#FF306D72" Click="HplStep13_Theory_Click">+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep13_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Чтобы найти самую маленькую стоимость перевозки нужно в матрице стоимостей перевозки среди всех стоимостей отыскать наименьшую. 
+                                    <LineBreak/><Image Height="205" Source="Resourses/Practice/practice_min_1.png" Margin="0,20,0,10" ></Image>
+                                    <LineBreak/><LineBreak/>Для того, чтобы распределить ресурсы для ячейки, мы должны понять, какими запасами обладает поставщик и какие потребности потребителя надо удовлетворить.
+                                    <LineBreak/><Image Height="250" Source="Resourses/Practice/practice_sz_2.png" Margin="0,20,0,10" ></Image>
+                                    <LineBreak/><LineBreak/>Для того, чтобы распределить ресурсы для ячейки, мы должны назначить такое максимально возможное количество ресурсов, равное минимальному числу из 
+                                    потребности и запаса. Ведь мы не можем назначить ресурсов больше, чем надо потребителю или больше, чем есть у поставщика. Поэтому из данных чисел, количество запасов и 
+                                    количество потребностей в данной ячейке, мы выбираем минимальное.
+                                    <LineBreak/><Image Height="250" Source="Resourses/Practice/practice_sz_3.png" Margin="0,20,0,10" ></Image>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep14" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 4
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Вы верно рассчитали все параметры, программа автоматически записывает ответ в матрицу перевозок. В левой части окна мы можете заметить, что ресурс назначен. 
+                                <LineBreak/><LineBreak/>Распределив ресурсы, мы должны не забывать, что теперь у нас у поставщика и потребителя для данной ячейки изменилось количество запасов и потребностей соответственно. Оставшееся количество для удобства записано слева и снизу от матрицы перевозки. 
+                                <LineBreak/><LineBreak/>Каждый раз распределяя ресурсы нужно не забывать, что для каких-то поставщиков или потребителей количество запасов или потребностей может стать меньше, чем было в самом начале. 
+                                <LineBreak/><LineBreak/>Нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep14_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep14_Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+
+                <Grid x:Name="txtStep15" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 5
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Мы вычеркнули из матрицы 2 строку, ее мы больше рассматривать не будем.
+                                <LineBreak/>
+                                <DataGrid x:Name="gridStep15" Margin="0,20,0,0" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                                </DataGrid>
+                                <LineBreak/><LineBreak/>
+                                Так как у нас осталась только одна строка и нет разницы в каком порядке мы распределим дальше ресурсы, то мы просто назначем оставшиеся ресурсы по очереди.
+                            </TextBlock>
+                            <Button x:Name="btnStep15_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep15_Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+
+                <Grid x:Name="txtStep2_3" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 5
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Отлично, вы верно распределили все ресурсы! Транспортная задача практически решена. Вы можете перейти к последнему шагу, для этого нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep2_3_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep2_3_Ok_Click"  >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep3" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 3
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                На последенм шаге нам нужно рассчитать стоимость данной перевозки. 
+                                <LineBreak/><LineBreak/>Стоимость перевозки равна 
+                                <TextBox x:Name="txtS3" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/><LineBreak/>Заполните поле и нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep3_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep3_Ok_Click"  >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep3_Theory" Foreground="#FF306D72" Click="HplStep3_Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep3_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <StackPanel>
+                                    <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                        Чтобы рассчитать стоимость перевозки нужно попарно перемножить ячейки из матрицы перевозки (опорный план) и матрицы стоимостей перевозки, а затем сложить полученные числа.
+                                        <LineBreak/><Image Height="400" Source="Resourses/Practice/practice_sz_4.png" Margin="0,20,0,10" ></Image>
+                                        
+                                    </TextBlock>
+                                    <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">      
+                                        C = Х₁₁·С₁₁ + Х₁₂·С₁₂ + Х₂₂·С₂₂ + Х₂₃·С₂₃ + Х₃₃·С₃₃ + Х₃₄·С₃₄ = 10·6 + 4·5 + 10·6 + 2·4 + 4·3 + 4·6 = 60 + 20 + 60 + 8 + 12 + 24 = 184
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+            
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,187 @@
+﻿<Window x:Class="Transport.Practice"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Transport"
+        mc:Ignorable="d"
+        Title="Практика. Метод «северо-западного» угла" Height="720" Width="1280" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFFFF3DA">
+
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="65*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Border BorderBrush="White" BorderThickness="0,0,1,0"/>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="Resourses/bgrr.jpg" Stretch="UniformToFill"/>
+                    </StackPanel.Background>
+                    <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="34,50,60,0">
+                            Графический метод
+                    </TextBlock>
+                    <TextBlock FontSize="22" FontFamily="Sans" Margin="60,30,30,0" TextWrapping="Wrap">
+                            Дана целевая функция:
+                    </TextBlock>
+               
+                        <Image Height="50" Source="C:\Users\Ник\Desktop\Transport\Transport\Resourses\Practice\parct2.PNG" Margin="0,10,0,10" ></Image>
+                 
+                    <TextBlock FontSize="22" FontFamily="Sans" Margin="60,30,30,0" TextWrapping="Wrap">
+                            Ограничения :
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                       
+                            <Image Height="100" Source="C:\Users\Ник\Desktop\Transport\Transport\Resourses\Practice\parct3.PNG" Margin="200,10,0,10" ></Image>
+                        
+                        <DataGrid x:Name="gridResourses" Margin="0,20,30,0" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                        </DataGrid>
+                    </StackPanel>
+                    <DataGrid x:Name="gridNeeds" Margin="60,20,30,70" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                    </DataGrid>
+                   
+
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid x:Name="txtStep1_1" Visibility="Visible">
+                    <ScrollViewer>
+                        <ScrollViewer.Background>
+                            <ImageBrush ImageSource="Resourses/fon.png" Stretch="UniformToFill"/>
+                        </ScrollViewer.Background>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 1
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify" Foreground="White">
+                                Решение графическим методом начинается с ОДР (области доступных решений).
+                                <LineBreak/><LineBreak/>Для этого мы построим семейство линий уровня данной функции и найдем точку ОДР, через которую проходит линия уровня с наименьшим в задаче на минимум (соответсвенно, наибольшим в задачи на максимум) значением параметра.
+                                Вот эта точка и будет оптимальным решением.
+                                Заполните следующие поля и 
+                                нажмите ОК. Если у вас возникли трудности, ознакомьтесь с Теоретической справкой.
+                                <LineBreak/>
+                                Глобальный максимум:
+                                <TextBox x:Name="txtNeeds" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70"  TextChanged="txtNeeds_TextChanged">
+
+                                </TextBox>
+                                <LineBreak/>
+                                Глобальный минимум:
+                                <TextBox x:Name="txtResources" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70"  TextChanged="txtResources_TextChanged">
+
+                                </TextBox>
+                            </TextBlock>
+                            <Button x:Name="btnStep1Ok" Width="100" Height="50" Background="#FFB9B9B9" FontFamily="Sans" FontSize="20" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep1Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep1Theory" Foreground="ForestGreen" Click="HplStep1Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep1Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Foreground="White" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Линиями уровня целевой функции являются параллельные прямые с угловым коэффициентом.
+                                    <LineBreak/><LineBreak/> Глобальный минимум достигается в точке О (0;0). А максимум -  касания линии уровня и окружности
+                                    <LineBreak/><Image Height="400" Source="Resourses/Practice/pract1.png" Margin="0,10,0,10" ></Image>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep1_2" Visibility="Collapsed">
+                    <Grid.Background>
+                        <ImageBrush Stretch="UniformToFill" ImageSource="Resourses/fon.png"/>
+                    </Grid.Background>
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 1
+                            </TextBlock>
+                            <TextBlock x:Name="txt_s1" FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Верно указав точки глобального максимума и минимума, теперь вы можете ответить на следующий вопрос: имеет ли решение данная задача?
+                            </TextBlock>
+                            <RadioButton x:Name="rbt1" Margin="30,10,30,0" FontFamily="Sans" FontSize="22">
+                                Нет
+                            </RadioButton>
+                            <RadioButton x:Name="rbt2" Margin="30,10,30,0" FontFamily="Sans" FontSize="22">
+                                Да
+                            </RadioButton>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                Если вы испытываете трудности при выборе ответа, воспользуйтесь Теоретической справкой. После того как ответите, нажмите кнопку «Перейти к следующему шагу».
+                            </TextBlock>
+                            <Button x:Name="btnStep1_1Ok" Width="250" Height="50" Background="#FFB9B9B9" FontFamily="Sans" FontSize="22" BorderThickness="1" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep1_1Ok_Click"  >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    Перейти к следующему шагу
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep1_2_Theory" Foreground="ForestGreen" Click="HplStep1_2_Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep1_2_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">
+                                   Графический метод можно использовать для решения задачи нелинейного программирования (НП), которая содержит две переменных х1 и х2.
+                                    <LineBreak/><LineBreak/>Чтобы найти ее оптимальное решение, нужно Найти ОДР, определяемую ограничениями задачи. 
+                                    <LineBreak/><LineBreak/>Если окажется, что эта область пуста, то это означает, что задача не имеет решения.
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep2" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel.Background>
+                                <ImageBrush Stretch="UniformToFill" ImageSource="Resourses/fon.png"/>
+                            </StackPanel.Background>
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 2
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Так как область не пуста, задача имеет решение.
+                                Можем начинать решать систему уравнений:
+                                
+                                <LineBreak/><LineBreak/>
+                                <Image Height="100" Source="C:\Users\Ник\Desktop\Transport\Transport\Resourses\Practice\pract4.PNG" Margin="50,10,0,10" ></Image>
+                                <LineBreak/>
+                                С минимумом все ясно – при радиусе = 0, окружность вырождается в точку (1,1), эта точка
+внутри ОДЗ.
+                                 <LineBreak/>
+                                    <LineBreak/> То есть минимум функции  - 
+                                 <LineBreak/>
+                                <Image Height="100" Source="C:\Users\Ник\Desktop\Transport\Transport\Resourses\Practice\pract5.PNG" Margin="50,10,0,10" ></Image>
+                                 <LineBreak/>
+                           
+                                <LineBreak/> А максимум функции - 
+                                 <LineBreak/>
+                                 <Image Height="100" Source="C:\Users\Ник\Desktop\Transport\Transport\Resourses\Practice\parct5.PNG" Margin="50,10,0,10" ></Image>
+                                
+                                
+                                 <LineBreak/>
+                                
+                                <LineBreak/>Теперь нам известно:
+                                <LineBreak/>* точка максимума функции
+                              <LineBreak/>* точка минимума функции
+                               
+                             
+                                <LineBreak/><LineBreak/><LineBreak/>Заполните все поля и нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep2_Ok" Width="120" Height="50" Background="#FFB9B9B9" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep2_Ok_Click"  >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                     
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

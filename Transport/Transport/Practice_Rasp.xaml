@@ -1,0 +1,1021 @@
+﻿<Window x:Class="Transport.Practice_Rasp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Transport"
+        mc:Ignorable="d"
+        Title="Практика. Распределительный метод" Height="900" Width="1600" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFFFF3DA">
+
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="65*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Border BorderBrush="White" BorderThickness="0,0,1,0"/>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel.Background>
+                        <ImageBrush Stretch="UniformToFill" ImageSource="Resourses/dlp.jpg"/>
+                    </StackPanel.Background>
+                    <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="60,50,60,0">
+                          Теорема Куна-Таккера
+                    </TextBlock>
+                    <TextBlock FontSize="22" FontFamily="Sans" Margin="60,30,30,0" TextWrapping="Wrap">
+                            Дано:
+                    </TextBlock>
+             
+                    
+                    
+                    <TextBlock FontSize="22" FontFamily="Sans" Margin="60,30,30,0" TextWrapping="Wrap">
+                            Условие:
+                    </TextBlock>
+                  
+                    
+                    
+                    <TextBlock FontSize="22" FontFamily="Sans" Margin="60,30,30,0" TextWrapping="Wrap">
+                            Ограничения:
+                    </TextBlock>
+              
+                    
+                    
+                    <Button FontFamily="Sans" FontSize="30" Height="60" Width="358" Foreground="White"  Content="← В главное меню" Margin="60,30,0,50" HorizontalAlignment="Left" Click="Button_Click" >
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                    </Button>
+
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid x:Name="txtStep1" Visibility="Visible">
+                    <ScrollViewer>
+                        <ScrollViewer.Background>
+                            <ImageBrush Stretch="UniformToFill" ImageSource="Resourses/fon.png"/>
+                        </ScrollViewer.Background>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 1
+                            </TextBlock>
+                            <TextBlock x:Name="gridStep1_Kontur" FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                              Text
+                                <LineBreak/><LineBreak/>Подсказка
+                                <LineBreak/>
+                                Text
+                                <TextBox x:Name="txt_1_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_1_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_1_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_1_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_1_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_1_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_1_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_1_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                .
+                                <LineBreak/>Text:
+                                <TextBox x:Name="txt_2_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_2_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_2_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_2_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_2_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_2_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_2_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_2_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                .
+                                <LineBreak/>Text:
+                                <TextBox x:Name="txt_3_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_3_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_3_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_3_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_3_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_3_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_3_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_3_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                       
+                                .
+                                <LineBreak/>Text:
+                                <TextBox x:Name="txt_4_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_4_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_4_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_4_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_4_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_4_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_4_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_4_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                               
+                                .
+                                <LineBreak/>Text:
+                                <TextBox x:Name="txt_5_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_5_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_5_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_5_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_5_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_5_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_5_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_5_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                .
+                                <LineBreak/>Text:
+                                <TextBox x:Name="txt_6_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_6_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_6_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_6_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_6_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_6_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_6_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_6_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                .
+
+                            </TextBlock>
+                            <Button x:Name="btnStep1Ok" Width="100" Height="50" Background="#FFB4AFAF" FontFamily="Sans" FontSize="20" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep1Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="gridStep1_Algebra" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                Подсчитаем алгебраические суммы:
+                                <LineBreak/>
+                                Первый контур: С₁ =
+                                <TextBox x:Name="txt_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻    
+                                <TextBox x:Name="txt_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt_1_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_1_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt_1_5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Второй контур: С₂ =
+                                <TextBox x:Name="txt_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt_2_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_2_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt_2_5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Третий контур: С₃ =
+                                <TextBox x:Name="txt_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt_3_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_3_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt_3_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_3_6" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt_3_7" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Четвертый контур: С₄ =
+                                <TextBox x:Name="txt_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt_4_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_4_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt_4_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_4_6" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt_4_7" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Пятый контур: С₅ =
+                                <TextBox x:Name="txt_5_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_5_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt_5_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_5_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt_5_5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Шестой контур: С₆ =
+                                <TextBox x:Name="txt_6_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_6_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt_6_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_6_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt_6_5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                            </TextBlock>
+                            <Button x:Name="btnStep1_1Ok" Visibility="Collapsed" Width="100" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="20" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep1_1Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="gridStep1_End" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify" PreviewTextInput="gridAnswer_PreviewTextInput">
+                                Так как нам нужно минимизировать стоимость перевозок, то все шесть алгебраических сумм должны быть положительными. 
+                                <LineBreak/>Укажите сумму, которая является отрицательной: С 
+                                <TextBox x:Name="txtOtr" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput">
+
+                                </TextBox>
+                            </TextBlock>
+                            <Button x:Name="btnStep1_2Ok" Visibility="Collapsed" Width="100" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="20" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep1_2Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep1Theory" Foreground="ForestGreen" Click="HplStep1Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep1Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                             HELP
+                            
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep2" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 1
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Теперь мы должны перераспределить ресурсы в пределах данного контура.
+                                <LineBreak/><LineBreak/>Контур элемента 1,1 - 1,1; 1,4; 3,4; 3,1.
+                                <LineBreak/>Алгебраическая сумма С₁: 4 - 2 + 7 - 11 = -2
+                                <LineBreak/><Image Height="150" Source="Resourses/Practice/practice_r_2.png" Margin="0,20,0,10" ></Image>    
+                                <LineBreak/>В опорном плане назначенные перевозки по первому контуру таковы:
+                                <LineBreak/>(объемы указаны с сохранением знаков при определении алгебраической суммы)
+                                <LineBreak/><Image Height="150" Source="Resourses/Practice/practice_r_3.png" Margin="0,20,0,10" ></Image>    
+                                <LineBreak/>Самый маленький по модулю объем отрицательных поставок = -11
+                                <LineBreak/><LineBreak/>Значит мы должны вычесть его из каждой ячейки:
+                                <LineBreak/><LineBreak/>1,1: 
+                                <TextBox x:Name="txt_a_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_a_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_a_1_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                
+                                <LineBreak/>1,4:
+                                <TextBox x:Name="txt_a_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_a_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_a_2_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                
+                                <LineBreak/>3,4:
+                                <TextBox x:Name="txt_a_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_a_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_a_3_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                
+                                <LineBreak/>3,1: 
+                                <TextBox x:Name="txt_a_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_a_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_a_4_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                
+                                <LineBreak/><LineBreak/>Заполните поле и нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep2_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep2_Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep2_Theory" Foreground="#FF306D72" Click="HplStep2_Theory_Click_1" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep2_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <StackPanel>
+                                    <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                        Дан опорный план, найденный методом минимального элемента:
+                                        <LineBreak/><Image Height="140" Source="Resourses/r_1.png" Margin="0,10,0,10" ></Image>
+                                        <LineBreak/>Найден контур с отрицательной алгебраической суммой:
+                                        <LineBreak/>Для элемента Х₂₃ построим контур: Х₂₃, Х₂₁, Х₁₁, Х₁₃.
+                                        <LineBreak/>Третий контур: С₃ = 4 + (–3) + 6 + (–8) = –1.
+                                        <LineBreak/><Image Height="150" Source="Resourses/r_3.png" Margin="0,10,0,10" ></Image>
+                                        <LineBreak/>Назначения в опорном плане по третьему контуру таковы (объемы указаны с сохранением знаков при определении алгебраической суммы):
+                                        <LineBreak/><Image Height="150" Source="Resourses/Practice/practice_r_1.png" Margin="0,20,0,10" ></Image>
+                                        <LineBreak/>Чтобы перераспределить объемы перевозок между вершинами, нужно руководствоваться следующим правилом:
+                                        <LineBreak/><LineBreak/>Самый маленький по модулю объем отрицательных поставок алгебраически вычитается из всех вершин.
+                                        <LineBreak/>В нашем случае самый маленький по модулю элемент : -6. Вычетаем его из всех элементов, при этом не забываем про знаки!
+                                        <LineBreak/><LineBreak/>0 - (-6) = 0 + 6 = 6
+                                        <LineBreak/>-8 - (-6) = -8 + 6 = -2
+                                        <LineBreak/>2 - (-6) = 2 + 6 = 8
+                                        <LineBreak/>-6 - (-6) = -6 + 6 = 0
+                                        <LineBreak/><LineBreak/>Теперь полученные числа без знаков "-" записываем в опорный план.
+                                        <LineBreak/><Image Source="Resourses/r_4.png" Margin="0,10,0,0" Height="150"/>
+                                        <LineBreak/>
+                                    </TextBlock>
+
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep2_1" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 1
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Отлично, вы верно перераспределили ресурсы! Теперь у нас получился новый опорный план, который мы дальше будем использовать в качестве опорного плана. (См. в левой части экрана)
+                            </TextBlock>
+                            <Button x:Name="btnStep2_1_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep2_1_Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep3" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 2
+                            </TextBlock>
+                            <TextBlock x:Name="gridStep3_Kontur" FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                Дана матрица стоимостей перевозки и опорный план, полученный методом минимального элемента. 
+                                <LineBreak/><LineBreak/>Первым делом мы определяем свободные (пустые) элементы опорного плана и для каждого из них строим свой кратчайший контур:
+                                <LineBreak/>
+                                Для элемента 1,3 построим контур:
+                                <TextBox x:Name="txt2_1_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_1_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_1_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_1_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_1_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_1_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_1_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_1_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                .
+                                <LineBreak/>Для элемента 1,4 построим контур:
+                                <TextBox x:Name="txt2_2_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_2_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_2_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_2_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_2_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_2_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_2_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_2_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                .
+                                <LineBreak/>Для элемента 2,1 построим контур:
+                                <TextBox x:Name="txt2_3_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_3_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_3_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_3_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_3_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_3_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_3_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_3_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                               
+                                .
+                                <LineBreak/>Для элемента 2,3 построим контур:
+                                <TextBox x:Name="txt2_4_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_4_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_4_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_4_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_4_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_4_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_4_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_4_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_4_5_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_4_5_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_4_6_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_4_6_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                
+                                .
+                                <LineBreak/>Для элемента 2,4 построим контур:
+                                <TextBox x:Name="txt2_5_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_5_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_5_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_5_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_5_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_5_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_5_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_5_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_5_5_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_5_5_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_5_6_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_5_6_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                .
+                                <LineBreak/>Для элемента 3,2 построим контур:
+                                <TextBox x:Name="txt2_6_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_6_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_6_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_6_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_6_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_6_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt2_6_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt2_6_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                .
+
+                            </TextBlock>
+                            <Button x:Name="btnStep3Ok" Width="100" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="20" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep3Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="gridStep3_Algebra" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                Подсчитаем алгебраические суммы:
+                                <LineBreak/>
+                                Первый контур: С₁ =
+                                <TextBox x:Name="txt2_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻    
+                                <TextBox x:Name="txt2_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt2_1_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_1_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt2_1_5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Второй контур: С₂ =
+                                <TextBox x:Name="txt2_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt2_2_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_2_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt2_2_5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Третий контур: С₃ =
+                                <TextBox x:Name="txt2_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt2_3_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_3_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt2_3_5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Четвертый контур: С₄ =
+                                <TextBox x:Name="txt2_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt2_4_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_4_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt2_4_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_4_6" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt2_4_7" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Пятый контур: С₅ =
+                                <TextBox x:Name="txt2_5_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_5_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt2_5_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_5_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt2_5_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_5_6" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt2_5_7" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Шестой контур: С₆ =
+                                <TextBox x:Name="txt2_6_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_6_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt2_6_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_6_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt2_6_5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                            </TextBlock>
+                            <Button x:Name="btnStep3_1Ok" Visibility="Collapsed" Width="100" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="20" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep3_1Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="gridStep3_End" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify" PreviewTextInput="gridAnswer_PreviewTextInput">
+                                Так как нам нужно минимизировать стоимость перевозок, то все шесть алгебраических сумм должны быть положительными. 
+                                <LineBreak/>Укажите сумму, которая является отрицательной: С 
+                                <TextBox x:Name="txt2Otr" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput">
+
+                                </TextBox>
+                            </TextBlock>
+                            <Button x:Name="btnStep3_2Ok" Visibility="Collapsed" Width="100" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="20" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep3_2Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep3Theory" Foreground="#FF306D72" Click="HplStep3Theory_Click"  >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep3Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Дана матрица стоимостей:
+                                    <LineBreak/><Image Height="120" Source="Resourses/4-2.png" Margin="0,10,0,10" ></Image>
+                                    <LineBreak/>Дан опорный план, найденный методом минимального элемента:
+                                    <LineBreak/><Image Height="140" Source="Resourses/r_1.png" Margin="0,10,0,10" ></Image>
+                                    <LineBreak/>Свободными (пустыми) элементы опорного плана являются: Х₁₄, Х₂₂, Х₂₃, Х₃₁, Х₃₃ и Х₃₄.
+                                    <LineBreak/>Для каждого свободного элемента построим свой кратчайший прямоугольный контур.
+                                    <LineBreak/>Для элемента Х₁₄ построим контур: Х₁₄, Х₂₄, Х₂₁, Х₁₁.
+                                    <LineBreak/>Для элемента Х₂₂ построим контур: Х₂₂, Х₂₁, Х₁₁, Х₁₂. 
+                                    <LineBreak/>Для элемента Х₂₃ построим контур: Х₂₃, Х₂₁, Х₁₁, Х₁₃.
+                                    <LineBreak/>Для элемента Х₃₁ построим контур: Х₃₁, Х₁₁, Х₁₂, Х₃₂.
+                                    <LineBreak/>Для элемента Х₃₃ построим контур: Х₃₃, Х₃₂, Х₁₂, Х₁₃.
+                                    <LineBreak/>Для элемента Х₃₄ построим контур: Х₃₄, Х₃₂, Х₁₂, Х₁₁, Х₂₁, Х₂₄.
+                                    <LineBreak/><Image Height="500" Source="Resourses/r_2.png" Margin="0,10,0,10" ></Image>
+                                    <LineBreak/>Вершинам построенных контуров присвоим значения коэффициентов. Значения коэффициентов равны соответствующим значениям элементов матрицы 
+                                    стоимостей, а знаки должны строго чередоваться.
+                                    <LineBreak/>Первый контур: С₁ = 7 + (–2) + 3 + (–6) = 2.
+                                    <LineBreak/>Второй контур: С₂ = 6 + (–3) + 6 + (–5) = 4.
+                                    <LineBreak/>Третий контур: С₃ = 4 + (–3) + 6 + (–8) = –1.
+                                    <LineBreak/>Четвертый контур: С₄ = 9 + (–6) + 5 + (–1) = 7.
+                                    <LineBreak/>Пятый контур: С₅ = 3 + (–1) + 5 + (–8) = –1.
+                                    <LineBreak/>Шестой контур: С₆ = 6 + (–1) + 5 + (–6) + 3 + (–2) = 5.
+                                    <LineBreak/>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep4" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 2
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Теперь мы должны перераспределить ресурсы в пределах данного контура.
+                                <LineBreak/><LineBreak/>Контур элемента 3,2 - 3,2; 3,1; 1,1; 1,2.
+                                <LineBreak/>Алгебраическая сумма С₆: 8 - 11 + 4 - 2 = -1
+                                <LineBreak/><Image Height="150" Source="Resourses/Practice/practice_r_5.png" Margin="0,20,0,10" ></Image>    
+                                <LineBreak/>В опорном плане назначенные перевозки по первому контуру таковы:
+                                <LineBreak/>(объемы указаны с сохранением знаков при определении алгебраической суммы)
+                                <LineBreak/><Image Height="150" Source="Resourses/Practice/practice_r_6.png" Margin="0,20,0,10" ></Image>    
+                                <LineBreak/>Самый маленький по модулю объем отрицательных поставок = -2
+                                <LineBreak/><LineBreak/>Значит мы должны вычесть его из каждой ячейки:
+                                <LineBreak/><LineBreak/>3,2: 
+                                <TextBox x:Name="txt2_a_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_a_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt2_a_1_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                
+                                <LineBreak/>3,1:
+                                <TextBox x:Name="txt2_a_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_a_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt2_a_2_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                
+                                <LineBreak/>1,1:
+                                <TextBox x:Name="txt2_a_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_a_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt2_a_3_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                
+                                <LineBreak/>1,2: 
+                                <TextBox x:Name="txt2_a_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_a_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt2_a_4_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                
+                                <LineBreak/><LineBreak/>Заполните поле и нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep4_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep4_Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep4_Theory" Foreground="#FF306D72" Click="HplStep4_Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep4_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <StackPanel>
+                                    <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                        Дан опорный план, найденный методом минимального элемента:
+                                        <LineBreak/><Image Height="140" Source="Resourses/r_1.png" Margin="0,10,0,10" ></Image>
+                                        <LineBreak/>Найден контур с отрицательной алгебраической суммой:
+                                        <LineBreak/>Для элемента Х₂₃ построим контур: Х₂₃, Х₂₁, Х₁₁, Х₁₃.
+                                        <LineBreak/>Третий контур: С₃ = 4 + (–3) + 6 + (–8) = –1.
+                                        <LineBreak/><Image Height="150" Source="Resourses/r_3.png" Margin="0,10,0,10" ></Image>
+                                        <LineBreak/>Назначения в опорном плане по третьему контуру таковы (объемы указаны с сохранением знаков при определении алгебраической суммы):
+                                        <LineBreak/><Image Height="150" Source="Resourses/Practice/practice_r_1.png" Margin="0,20,0,10" ></Image>
+                                        <LineBreak/>Чтобы перераспределить объемы перевозок между вершинами, нужно руководствоваться следующим правилом:
+                                        <LineBreak/><LineBreak/>Самый маленький по модулю объем отрицательных поставок алгебраически вычитается из всех вершин.
+                                        <LineBreak/>В нашем случае самый маленький по модулю элемент : -6. Вычетаем его из всех элементов, при этом не забываем про знаки!
+                                        <LineBreak/><LineBreak/>0 - (-6) = 0 + 6 = 6
+                                        <LineBreak/>-8 - (-6) = -8 + 6 = -2
+                                        <LineBreak/>2 - (-6) = 2 + 6 = 8
+                                        <LineBreak/>-6 - (-6) = -6 + 6 = 0
+                                        <LineBreak/><LineBreak/>Теперь полученные числа без знаков "-" записываем в опорный план.
+                                        <LineBreak/><Image Source="Resourses/r_4.png" Margin="0,10,0,0" Height="150"/>
+                                        <LineBreak/>
+                                    </TextBlock>
+
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep4_1" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 2
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Отлично, вы верно перераспределили ресурсы! Теперь у нас получился новый опорный план, который мы дальше будем использовать в качестве опорного плана. (См. в левой части экрана)
+                            </TextBlock>
+                            <Button x:Name="btnStep4_1_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep4_1_Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep5" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 3
+                            </TextBlock>
+                            <TextBlock x:Name="gridStep5_Kontur" FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                Дана матрица стоимостей перевозки и опорный план, полученный методом минимального элемента. 
+                                <LineBreak/><LineBreak/>Первым делом мы определяем свободные (пустые) элементы опорного плана и для каждого из них строим свой кратчайший контур:
+                                <LineBreak/>
+                                Для элемента 1,2 построим контур:
+                                <TextBox x:Name="txt3_1_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_1_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_1_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_1_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_1_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_1_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_1_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_1_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                .
+                                <LineBreak/>Для элемента 1,3 построим контур:
+                                <TextBox x:Name="txt3_2_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_2_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_2_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_2_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_2_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_2_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_2_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_2_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                .
+                                <LineBreak/>Для элемента 1,4 построим контур:
+                                <TextBox x:Name="txt3_3_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_3_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_3_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_3_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_3_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_3_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_3_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_3_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                .
+                                <LineBreak/>Для элемента 2,1 построим контур:
+                                <TextBox x:Name="txt3_4_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_4_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_4_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_4_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_4_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_4_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_4_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_4_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                
+                                .
+                                <LineBreak/>Для элемента 2,3 построим контур:
+                                <TextBox x:Name="txt3_5_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_5_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_5_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_5_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_5_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_5_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_5_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_5_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                .
+                                <LineBreak/>Для элемента 2,4 построим контур:
+                                <TextBox x:Name="txt3_6_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_6_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_6_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_6_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_6_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_6_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt3_6_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt3_6_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                .
+
+                            </TextBlock>
+                            <Button x:Name="btnStep5Ok" Width="100" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="20" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep4Ok_Click"  >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="gridStep5_Algebra" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                Подсчитаем алгебраические суммы:
+                                <LineBreak/>
+                                Первый контур: С₁ =
+                                <TextBox x:Name="txt3_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻    
+                                <TextBox x:Name="txt3_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt3_1_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt3_1_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt3_1_5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Второй контур: С₂ =
+                                <TextBox x:Name="txt3_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt3_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt3_2_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt3_2_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt3_2_5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Третий контур: С₃ =
+                                <TextBox x:Name="txt3_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt3_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt3_3_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt3_3_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt3_3_5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Четвертый контур: С₄ =
+                                <TextBox x:Name="txt3_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt3_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt3_4_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt3_4_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt3_4_5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Пятый контур: С₅ =
+                                <TextBox x:Name="txt3_5_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt3_5_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt3_5_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt3_5_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt3_5_5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Шестой контур: С₆ =
+                                <TextBox x:Name="txt3_6_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt3_6_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt3_6_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt3_6_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                =
+                                <TextBox x:Name="txt3_6_5" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                            </TextBlock>
+                            <Button x:Name="btnStep5_1Ok" Visibility="Collapsed" Width="100" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="20" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep5_1Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep5Theory" Foreground="#FF306D72">+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep5Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Дана матрица стоимостей:
+                                    <LineBreak/><Image Height="120" Source="Resourses/4-2.png" Margin="0,10,0,10" ></Image>
+                                    <LineBreak/>Дан опорный план, найденный методом минимального элемента:
+                                    <LineBreak/><Image Height="140" Source="Resourses/r_1.png" Margin="0,10,0,10" ></Image>
+                                    <LineBreak/>Свободными (пустыми) элементы опорного плана являются: Х₁₄, Х₂₂, Х₂₃, Х₃₁, Х₃₃ и Х₃₄.
+                                    <LineBreak/>Для каждого свободного элемента построим свой кратчайший прямоугольный контур.
+                                    <LineBreak/>Для элемента Х₁₄ построим контур: Х₁₄, Х₂₄, Х₂₁, Х₁₁.
+                                    <LineBreak/>Для элемента Х₂₂ построим контур: Х₂₂, Х₂₁, Х₁₁, Х₁₂. 
+                                    <LineBreak/>Для элемента Х₂₃ построим контур: Х₂₃, Х₂₁, Х₁₁, Х₁₃.
+                                    <LineBreak/>Для элемента Х₃₁ построим контур: Х₃₁, Х₁₁, Х₁₂, Х₃₂.
+                                    <LineBreak/>Для элемента Х₃₃ построим контур: Х₃₃, Х₃₂, Х₁₂, Х₁₃.
+                                    <LineBreak/>Для элемента Х₃₄ построим контур: Х₃₄, Х₃₂, Х₁₂, Х₁₁, Х₂₁, Х₂₄.
+                                    <LineBreak/><Image Height="500" Source="Resourses/r_2.png" Margin="0,10,0,10" ></Image>
+                                    <LineBreak/>Вершинам построенных контуров присвоим значения коэффициентов. Значения коэффициентов равны соответствующим значениям элементов матрицы 
+                                    стоимостей, а знаки должны строго чередоваться.
+                                    <LineBreak/>Первый контур: С₁ = 7 + (–2) + 3 + (–6) = 2.
+                                    <LineBreak/>Второй контур: С₂ = 6 + (–3) + 6 + (–5) = 4.
+                                    <LineBreak/>Третий контур: С₃ = 4 + (–3) + 6 + (–8) = –1.
+                                    <LineBreak/>Четвертый контур: С₄ = 9 + (–6) + 5 + (–1) = 7.
+                                    <LineBreak/>Пятый контур: С₅ = 3 + (–1) + 5 + (–8) = –1.
+                                    <LineBreak/>Шестой контур: С₆ = 6 + (–1) + 5 + (–6) + 3 + (–2) = 5.
+                                    <LineBreak/>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep6" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 3
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Полученный опорный план оптимален, так как все алгебраические суммы не отрицательны! Транспортная задача практически решена. Вы можете перейти к последнему шагу, для этого нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep6_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep6_Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep7" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 4
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                На последенм шаге нам нужно рассчитать стоимость данной перевозки. 
+                                <LineBreak/><LineBreak/>Стоимость перевозки равна 
+                                <TextBox x:Name="txtS7" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="gridAnswer_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/><LineBreak/>Заполните поле и нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep7_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep7_Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep7_Theory" Foreground="#FF306D72" Click="HplStep7_Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep7_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <StackPanel>
+                                    <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                        Чтобы рассчитать стоимость перевозки нужно попарно перемножить ячейки из матрицы перевозки (оптимальный план) и матрицы стоимостей перевозки, а затем сложить полученные числа.
+                                        <LineBreak/><Image Height="400" Source="Resourses/Practice/practice_r_8.png" Margin="0,20,0,10" ></Image>
+
+                                    </TextBlock>
+                                    <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">      
+                                        C = Х₁₁·С₁₁ + Х₁₂·С₁₂ + Х₂₂·С₂₂ + Х₂₃·С₂₃ + Х₃₃·С₃₃ + Х₃₄·С₃₄ = 10·6 + 4·5 + 10·6 + 2·4 + 4·3 + 4·6 = 60 + 20 + 60 + 8 + 12 + 24 = 184
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

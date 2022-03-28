@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6104AB5D-B9AC-4CF5-B2DB-AE4D6880B4DC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Transport</RootNamespace>
+    <AssemblyName>Transport</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Bank.xaml.cs">
+      <DependentUpon>Bank.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Practice.xaml.cs">
+      <DependentUpon>Practice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Enter.xaml.cs">
+      <DependentUpon>Enter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Practice_Dobr.xaml.cs">
+      <DependentUpon>Practice_Dobr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Practice_Min.xaml.cs">
+      <DependentUpon>Practice_Min.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Practice_Pot.xaml.cs">
+      <DependentUpon>Practice_Pot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Practice_Rasp.xaml.cs">
+      <DependentUpon>Practice_Rasp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test1.xaml.cs">
+      <DependentUpon>Test1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test7.xaml.cs">
+      <DependentUpon>Test7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test8.xaml.cs">
+      <DependentUpon>Test8.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test9.xaml.cs">
+      <DependentUpon>Test9.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestReport.xaml.cs">
+      <DependentUpon>TestReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test6.xaml.cs">
+      <DependentUpon>Test6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test5.xaml.cs">
+      <DependentUpon>Test5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test4.xaml.cs">
+      <DependentUpon>Test4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test3.xaml.cs">
+      <DependentUpon>Test3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test2.xaml.cs">
+      <DependentUpon>Test2.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Bank.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Practice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Enter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Practice_Dobr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Practice_Min.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Practice_Pot.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Practice_Rasp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Test1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Test7.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Test8.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Test9.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TestReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Test6.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Test5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Test4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Test3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Test2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\10.png" />
+    <Resource Include="Resourses\2.png" />
+    <Resource Include="Resourses\3.png" />
+    <Resource Include="Resourses\4.png" />
+    <Resource Include="Resourses\5.png" />
+    <Resource Include="Resourses\6.png" />
+    <Resource Include="Resourses\7.png" />
+    <Resource Include="Resourses\8.png" />
+    <Resource Include="Resourses\9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\3-1.png" />
+    <Resource Include="Resourses\3-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\4-1.png" />
+    <Resource Include="Resourses\4-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\vip1.PNG" />
+    <Resource Include="Resourses\vip2.PNG" />
+    <Resource Include="Resourses\vopr.jpg" />
+    <Resource Include="Resourses\treugolnik-3d-svet-overwerk.jpg" />
+    <Resource Include="Resourses\баннер.png" />
+    <Resource Include="Resourses\11.png" />
+    <Resource Include="Resourses\12.png" />
+    <Resource Include="Resourses\13.png" />
+    <Resource Include="Resourses\Question_5\1.png" />
+    <Resource Include="Resourses\Question_5\2.png" />
+    <Resource Include="Resourses\Question_5\3.png" />
+    <Resource Include="Resourses\Question_5\4.png" />
+    <Resource Include="Resourses\Practice\practice_sz_1.png" />
+    <Resource Include="Resourses\Practice\practice_sz_2.png" />
+    <Resource Include="Resourses\Practice\practice_sz_3.png" />
+    <Resource Include="Resourses\Practice\practice_sz_4.png" />
+    <Resource Include="Resourses\Practice\practice_min_1.png" />
+    <Resource Include="Resourses\sz_1.png" />
+    <Resource Include="Resourses\sz_2.png" />
+    <Resource Include="Resourses\sz_3.png" />
+    <Resource Include="Resourses\sz_4.png" />
+    <Resource Include="Resourses\sz_5.png" />
+    <Resource Include="Resourses\sz_6.png" />
+    <Resource Include="Resourses\me_1.png" />
+    <Resource Include="Resourses\me_10.png" />
+    <Resource Include="Resourses\me_11.png" />
+    <Resource Include="Resourses\me_12.png" />
+    <Resource Include="Resourses\me_13.png" />
+    <Resource Include="Resourses\me_14.png" />
+    <Resource Include="Resourses\me_15.png" />
+    <Resource Include="Resourses\me_16.png" />
+    <Resource Include="Resourses\me_17.png" />
+    <Resource Include="Resourses\me_2.png" />
+    <Resource Include="Resourses\me_3.png" />
+    <Resource Include="Resourses\me_4.png" />
+    <Resource Include="Resourses\me_5.png" />
+    <Resource Include="Resourses\me_6.png" />
+    <Resource Include="Resourses\me_7.png" />
+    <Resource Include="Resourses\me_8.png" />
+    <Resource Include="Resourses\me_9.png" />
+    <Resource Include="Resourses\d_1.png" />
+    <Resource Include="Resourses\d_10.png" />
+    <Resource Include="Resourses\d_11_12.png" />
+    <Resource Include="Resourses\d_13.png" />
+    <Resource Include="Resourses\d_14.png" />
+    <Resource Include="Resourses\d_15.png" />
+    <Resource Include="Resourses\d_16.png" />
+    <Resource Include="Resourses\d_2.png" />
+    <Resource Include="Resourses\d_3.png" />
+    <Resource Include="Resourses\d_4.png" />
+    <Resource Include="Resourses\d_5.png" />
+    <Resource Include="Resourses\d_6.png" />
+    <Resource Include="Resourses\d_7.png" />
+    <Resource Include="Resourses\d_8.png" />
+    <Resource Include="Resourses\d_9.png" />
+    <Resource Include="Resourses\r_1.png" />
+    <Resource Include="Resourses\r_2.png" />
+    <Resource Include="Resourses\r_3.png" />
+    <Resource Include="Resourses\r_4.png" />
+    <Resource Include="Resourses\r_5.png" />
+    <Resource Include="Resourses\p_1.png" />
+    <Resource Include="Resourses\p_10.png" />
+    <Resource Include="Resourses\p_11.png" />
+    <Resource Include="Resourses\p_12.png" />
+    <Resource Include="Resourses\p_13.png" />
+    <Resource Include="Resourses\p_14.png" />
+    <Resource Include="Resourses\p_15.png" />
+    <Resource Include="Resourses\p_2.png" />
+    <Resource Include="Resourses\p_3.png" />
+    <Resource Include="Resourses\p_4.png" />
+    <Resource Include="Resourses\p_5.png" />
+    <Resource Include="Resourses\p_6.png" />
+    <Resource Include="Resourses\p_7.png" />
+    <Resource Include="Resourses\p_8.png" />
+    <Resource Include="Resourses\p_9.png" />
+    <Resource Include="Resourses\Practice\practice_r_1.png" />
+    <Resource Include="Resourses\Practice\practice_r_2.png" />
+    <Resource Include="Resourses\Practice\practice_r_3.png" />
+    <Resource Include="Resourses\Practice\practice_r_4.png" />
+    <Resource Include="Resourses\Practice\practice_r_5.png" />
+    <Resource Include="Resourses\Practice\practice_r_6.png" />
+    <Resource Include="Resourses\Practice\practice_r_7.png" />
+    <Resource Include="Resourses\Practice\practice_r_8.png" />
+    <Resource Include="Resourses\Practice\practice_dobr_1.png" />
+    <Resource Include="Resourses\del_1.png" />
+    <Resource Include="Resourses\del_2.png" />
+    <Resource Include="Resourses\del_3.png" />
+    <Resource Include="Resourses\del_4.png" />
+    <Resource Include="Resourses\del_5.png" />
+    <Resource Include="Resourses\del_6.png" />
+    <Resource Include="Resourses\del_10.png" />
+    <Resource Include="Resourses\del_7.png" />
+    <Resource Include="Resourses\del_8.png" />
+    <Resource Include="Resourses\del_9.png" />
+    <Resource Include="Resourses\Practice\dobr_1.png" />
+    <Resource Include="Resourses\Practice\dobr_2.png" />
+    <Resource Include="Resourses\Practice\dobr_3.png" />
+    <Resource Include="Resourses\48043-linii_figury_zhelto-serye.jpg" />
+    <Resource Include="Resourses\bgrr.jpg" />
+    <Resource Include="Resourses\dlp.jpg" />
+    <Resource Include="Resourses\logg.jpg" />
+    <Resource Include="Resourses\back.png" />
+    <Resource Include="Resourses\login.png" />
+    <Resource Include="Resourses\model1.png" />
+    <Resource Include="Resourses\model2.png" />
+    <Resource Include="Resourses\graf1.png" />
+    <Resource Include="Resourses\graf2.png" />
+    <Resource Include="Resourses\graf3.png" />
+    <Resource Include="Resourses\graf4.png" />
+    <Resource Include="Resourses\graf5.png" />
+    <Resource Include="Resourses\drob1.png" />
+    <Resource Include="Resourses\drob2.png" />
+    <Resource Include="Resourses\drob3.png" />
+    <Resource Include="Resourses\drob4.png" />
+    <Resource Include="Resourses\drob5.png" />
+    <Resource Include="Resourses\drob6.png" />
+    <Resource Include="Resourses\drob7.png" />
+    <Resource Include="Resourses\lagr1.png" />
+    <Resource Include="Resourses\lagr2.png" />
+    <Resource Include="Resourses\lagr3.PNG" />
+    <Resource Include="Resourses\lagr4.PNG" />
+    <Resource Include="Resourses\kun1.PNG" />
+    <Resource Include="Resourses\kun2.PNG" />
+    <Resource Include="Resourses\kun3.PNG" />
+    <Resource Include="Resourses\kvadr1.PNG" />
+    <Resource Include="Resourses\kvadr2.PNG" />
+    <Resource Include="Resourses\kvadr3.PNG" />
+    <Resource Include="Resourses\Practice\pract1.PNG" />
+    <Resource Include="Resourses\Practice\parct2.PNG" />
+    <Resource Include="Resourses\Practice\parct3.PNG" />
+    <Resource Include="Resourses\Practice\pract4.PNG" />
+    <Resource Include="Resourses\Practice\parct5.PNG" />
+    <Resource Include="Resourses\Practice\pract5.PNG" />
+    <Resource Include="Resourses\fon.png" />
+    <Resource Include="Resourses\Practice\lagr1.PNG" />
+    <Resource Include="Resourses\Practice\lagr2.PNG" />
+    <Content Include="Resourses\Test.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

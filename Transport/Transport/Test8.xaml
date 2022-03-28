@@ -1,0 +1,89 @@
+﻿<Window x:Class="Transport.Test8"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Transport"
+        mc:Ignorable="d"
+        Title="Тест" Height="650" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFFFF3DA">
+        <Grid Height="80" VerticalAlignment="Top">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF85B8AD" Offset="0"/>
+                    <GradientStop Color="#FFFAE2AD" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock FontFamily="Sans" FontSize="30" HorizontalAlignment="Center" Margin="0,20,0,20" >
+                    Задание №7
+            </TextBlock>
+        </Grid >
+        <Grid Margin="0,80,0,0">
+            <ScrollViewer>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock x:Name="txtblQestion"  FontFamily="Times New Roman" FontSize="20" Margin="30,30,30,0" TextWrapping="Wrap">
+                            <Bold>1. Решите транспортную задачу методом "северо-западного" угла.</Bold> 
+                            <LineBreak/>(количествово баллов за задание - 5 балла)
+                            <Bold> <LineBreak/>2. Расчитайте стоимость перевозки. </Bold> 
+                            <LineBreak/>(количествово баллов за задание - 1 балл)
+                    </TextBlock>
+                    <TextBlock FontFamily="Times New Roman" FontSize="20" Margin="30,10,30,0" TextWrapping="Wrap">
+                            <LineBreak/>
+                            Дана матрица стоимостей перевозки:
+                            <LineBreak/>
+                    </TextBlock>
+                    <DataGrid x:Name="gridExample" Margin="30,0" HeadersVisibility="None" FontFamily="Times New Roman" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" IsEnabled="False" HorizontalAlignment="Left" ColumnWidth="50">
+
+                    </DataGrid>
+
+
+                    <TextBlock FontFamily="Times New Roman" FontSize="20" Margin="30,10,30,0" TextWrapping="Wrap">
+                            <LineBreak/>
+                            Ответ:
+                            <LineBreak/>
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="btnAddRow" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="30,0,0,0" Background="#FFFFE4AD" BorderBrush="#FFFDB729" MinWidth="180" Click="btnAddRow_Click" >
+                            + Добавить строку
+                        </Button>
+                        <Button x:Name="btnAddColumn" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="30,0" Background="#FFFFE4AD" BorderBrush="#FFFDB729" MinWidth="190" Click="btnAddColumn_Click" >
+                            + Добавить столбец
+                        </Button>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Button x:Name="btnDeleteRow" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="30,0,0,0" Background="#FFFFE4AD" BorderBrush="#FFFDB729" MinWidth="180" Click="btnDeleteRow_Click">
+                            – Удалить строку
+                        </Button>
+                        <Button x:Name="btnDeleteColumn" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="30,0" Background="#FFFFE4AD" BorderBrush="#FFFDB729" MinWidth="190" Click="btnDeleteColumn_Click" >
+                            – Удалить столбец
+                        </Button>
+                    </StackPanel>
+
+                    <DataGrid x:Name="gridAnswer" Margin="30,30,30,0" HeadersVisibility="None" FontFamily="Times New Roman" FontSize="20" CanUserReorderColumns="False" CanUserSortColumns="False" MaxColumnWidth="70" MinColumnWidth="50" HorizontalAlignment="Left" CanUserAddRows="False" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput">
+
+                    </DataGrid>
+                    <TextBlock FontFamily="Times New Roman" FontSize="20" Margin="30,10,30,0" TextWrapping="Wrap">
+                            <LineBreak/>
+                            Стоимость перевозки:
+                            <TextBox x:Name="txt" FontFamily="Times New Roman" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txt_PreviewTextInput">
+
+                            </TextBox>
+                            <LineBreak/>
+                    </TextBlock>
+                    <Button FontFamily="Sans" FontSize="30" Height="60" Width="220" BorderBrush="#FFD6280E" Foreground="White" Margin="271,20,271,0" Content="Продолжить" Click="Button_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FF82B7AD"/>
+                                <GradientStop Color="#FFFFE4AD" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <TextBlock>
+                            <LineBreak/><LineBreak/>
+                    </TextBlock>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>

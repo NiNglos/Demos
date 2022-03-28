@@ -1,0 +1,49 @@
+﻿<Window x:Class="Transport.Test5"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Transport"
+        mc:Ignorable="d"
+        Title="Тест" Height="650" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFA8A8A8">
+        <Grid Height="80" VerticalAlignment="Top">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF686868" Offset="0"/>
+                    <GradientStop Color="#FF646161" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <TextBlock FontFamily="Sans" FontSize="30" HorizontalAlignment="Center" Margin="0,20,0,20" >
+                    Задание №4
+            </TextBlock>
+        </Grid>
+        <Grid Margin="0,80,0,0" >
+            <ScrollViewer>
+                <ScrollViewer.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="Resourses/fon.png"/>
+                </ScrollViewer.Background>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock x:Name="txtblQestion"  FontFamily="Times New Roman" FontSize="20" Margin="30,30,30,0" TextWrapping="Wrap" FontWeight="Bold">
+                            Вопрос:
+                    </TextBlock>
+                    <TextBlock FontFamily="Times New Roman" FontSize="20" Margin="30,10,30,0" TextWrapping="Wrap">
+                            <LineBreak/>
+                            Дайте письменный ответ на данный вопрос:
+                            <LineBreak/>
+                    </TextBlock>
+                    <TextBox x:Name="txtbox" FontFamily="Times New Roman" FontSize="20" Margin="30,10,30,0" TextWrapping="Wrap" Height="30">
+
+                    </TextBox>
+                    <Button FontFamily="Sans" FontSize="30" Height="60" Width="220" Margin="271,40,271,0" Content="Продолжить" Click="Button_Click_1">
+
+                    </Button>
+                    <TextBlock>
+                            <LineBreak/><LineBreak/>
+                    </TextBlock>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>

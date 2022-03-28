@@ -1,0 +1,561 @@
+﻿<Window x:Class="Transport.Practice_Pot"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Transport"
+        mc:Ignorable="d"
+        Title="Практика. Метод потенциалов" Height="900" Width="1600" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFFFF3DA">
+        
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="65*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Border BorderBrush="White" BorderThickness="0,0,1,0"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="60,50,60,0">
+                            Метод потенциалов
+                    </TextBlock>
+                    <TextBlock FontSize="22" FontFamily="Sans" Margin="60,30,30,0" TextWrapping="Wrap">
+                            Дана матрица стоимостей перевозки:
+                    </TextBlock>
+                    <DataGrid x:Name="gridExample" Margin="60,20,30,0" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" IsEnabled="False" HorizontalAlignment="Left" ColumnWidth="50">
+
+                    </DataGrid>
+                    <TextBlock FontSize="22" FontFamily="Sans" Margin="60,30,30,0" TextWrapping="Wrap">
+                            Опорный план (метод "северо-западного" угла):
+                    </TextBlock>
+                    <DataGrid x:Name="gridAnswer" Margin="60,20,20,0" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                    </DataGrid>
+                    <TextBlock FontSize="22" FontFamily="Sans" Margin="60,30,30,0" TextWrapping="Wrap">
+                            Оптимальный план:
+                    </TextBlock>
+                    <DataGrid x:Name="gridOptimal" Margin="60,20,30,70" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                    </DataGrid>
+                    <Button FontFamily="Sans" FontSize="30" Height="60" Width="250" BorderBrush="#FFD6280E" Foreground="White"  Content="← В главное меню" Margin="60,30,30,50" HorizontalAlignment="Left" Click="Button_Click" >
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FF82B7AD"/>
+                                <GradientStop Color="#FFFFE4AD" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid x:Name="txtStep1" Visibility="Visible">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 1
+                            </TextBlock>
+                            <TextBlock x:Name="gridStep1_Kontur" FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                Дана матрица стоимостей перевозки и опорный план, полученный методом "северо-западного" угла. 
+                                <LineBreak/><LineBreak/>Примем за ноль потенциал первой строки U₁ = 0.
+                                <LineBreak/>
+                                Потенциал первого столбца: V₁ = C₁₁ - U₁ =
+                                <TextBox x:Name="txt_a_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_a_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_a_1_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Потенциал второй строки: U₂ = C₂₁ - V₁ =
+                                <TextBox x:Name="txt_a_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_a_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_a_2_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                
+                                <LineBreak/>Потенциал второго столбца: V₂ = C₂₂ - U₂ = 
+                                <TextBox x:Name="txt_a_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_a_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_a_3_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Потенциал третьей строки: U₃ = C₃₂ - V₂ = 
+                                <TextBox x:Name="txt_a_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_a_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_a_4_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Потенциал третьего столбца: V₃ = C₃₃ - U₃ =
+                                <TextBox x:Name="txt_a_5_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_a_5_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_a_5_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Потенциал четвертого столбца:V₄ = C₃₄ - U₃ =
+                                <TextBox x:Name="txt_a_6_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_a_6_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_a_6_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+
+                            </TextBlock>
+                            <Button x:Name="btnStep1Ok" Width="100" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="20" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep1Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="gridStep1_Algebra" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                Для свободных клеток опорного плана вычисляем оценки по формуле uᵢ + vⱼ - cᵢⱼ ≤ 0.
+                                <LineBreak/>
+                                Клетка 1,2: u₁ + v₂ - с₁₂ = 
+                                  
+                                <TextBox x:Name="txt_1_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt_1_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_1_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_1_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Клетка 1,3: u₁ + v₃ - с₁₃ = 
+
+                                <TextBox x:Name="txt_2_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt_2_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_2_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_2_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Клетка 1,4: u₁ + v₄ - с₁₄ = 
+                                
+                                <TextBox x:Name="txt_3_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt_3_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_3_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_3_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Клетка 2,3: u₂ + v₃ - с₂₃ = 
+                                
+                                <TextBox x:Name="txt_4_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt_4_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_4_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_4_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Клетка 2,4: u₂ + v₄ - с₂₄ = 
+                                
+                                <TextBox x:Name="txt_5_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt_5_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_5_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_5_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Клетка 3,1: u₃ + v₁ - с₃₁ = 
+                                
+                                <TextBox x:Name="txt_6_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt_6_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_6_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_6_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                            </TextBlock>
+                            <Button x:Name="btnStep1_1Ok" Visibility="Collapsed" Width="100" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="20" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep1_1Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="gridStep1_End" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify" PreviewTextInput="gridAnswer_PreviewTextInput">
+                                Так как нам нужно минимизировать стоимость перевозок, то все шесть оценок должны быть меньше или равны нулю.
+                                <LineBreak/>Укажите клетку, в которой находится положительная оценка: Клетка
+                                <TextBox x:Name="txtOtr_1" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput">
+
+                                </TextBox>
+                                ,
+                                <TextBox x:Name="txtOtr_2" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput">
+
+                                </TextBox>
+                            </TextBlock>
+                            <Button x:Name="btnStep1_2Ok" Visibility="Collapsed" Width="100" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="20" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep1_2Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep1Theory" Foreground="#FF306D72" Click="HplStep1Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep1Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Дана матрица стоимостей:
+                                    <LineBreak/><Image Height="120" Source="Resourses/4-2.png" Margin="0,10,0,10" ></Image>
+                                    <LineBreak/>Дан опорный план, найденный методом «северо-западного» угла:
+                                    <LineBreak/><LineBreak/><Image Source="Resourses/p_1.png" Margin="0,0" Height="150"/>
+                                    <LineBreak/><LineBreak/>Базисные клетки опорного плана – а₁₁, а₁₂, а₂₂, а₂₃, а₃₃, а₃₄; свободные – а₁₃, а₁₄, а₂₁, а₂₄, а₃₁, а₃₂.
+                                    <LineBreak/><LineBreak/>Примем за ноль потенциал первой строки u₁ = 0.
+                                    <LineBreak/><LineBreak/>Тогда v₁ = c₁₁ - u₁ = 6 – 0 = 6.
+                                    <LineBreak/><LineBreak/>Далее выбираем те базисные клетки, для которых уже имеется один потенциал (или строки или столбца), и определяем следующий потенциал.
+                                    <LineBreak/><LineBreak/>Для базисной клетки а₁₂ известен потенциал первой строки u₁, поэтому мы можем определить потенциал второго столбца: v₂ = c₁₂ - u₁ = 5 – 0 = 5.
+                                    <LineBreak/><LineBreak/>Аналогично выполним расчет оставшихся потенциалов:
+                                    <LineBreak/><LineBreak/>Потенциал второй строки: u₂ = c₂₂ - v₂ = 6 – 5 = 1
+                                    <LineBreak/>Потенциал третьего столбца: v₃ = c₂₃ - u₂ = 4 – 1 = 3
+                                    <LineBreak/>Потенциал третьей строки: u₃ = c₃₃ - v₃ = 3 – 3 = 0
+                                    <LineBreak/>Потенциал четвертого столбца: v₄ = c₃₄ - u₃ = 6 – 0 = 6
+                                    <LineBreak/><LineBreak/>
+
+                                    <Image Source="Resourses/p_2.png" Margin="0,0" Height="200"/>
+                                    <LineBreak/><LineBreak/>Для свободных клеток вычисляем оценки по формуле uᵢ + vⱼ - cᵢⱼ ≤ 0.
+                                    <LineBreak/><LineBreak/>Клетка 1,3: u₁ + v₃ - с₁₃ = 0 + 3 – 8 = -5; -5 ≤ 0 
+                                    <LineBreak/>Клетка 1,4: u₁ + v₄ - с₁₄ = 0 + 6 – 7 = -1; -1 ≤ 0
+                                    <LineBreak/>Клетка 2,1: u₂ + v₁ - с₂₁ = 1 + 6 – 3 = 4; 4 ≤ 0; не выполняется
+                                    <LineBreak/>Клетка 2,4: u₂ + v₄ - с₂₄ = 1 + 6 – 2 = 5; 5 ≤ 0; не выполняется
+                                    <LineBreak/>Клетка 3,1: u₃ + v₁ - с₃₁ = 0 + 6 – 9 = -3; -3 ≤ 0
+                                    <LineBreak/>Клетка 3,2: u₃ + v₂ - с₃₂ = 0 + 5 – 1 = 4; 4 ≤ 0; не выполняется
+                                    <LineBreak/><LineBreak/>
+
+                                    <Image Source="Resourses/p_3.png" Margin="0,0" Height="200"/>
+                                    <LineBreak/>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep2" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 1
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Теперь мы должны построить контур для данного элемента 3,1 и перераспределить ресурсы в его пределах.
+                                <LineBreak/><LineBreak/>Контур элемента 3,1:
+                                <TextBox x:Name="txt_1_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_1_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_1_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_1_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_1_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_1_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ;
+                                <TextBox x:Name="txt_1_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                ,
+                                <TextBox x:Name="txt_1_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="gridAnswer_PreviewTextInput"/>
+                                .
+                                <LineBreak/><LineBreak/>Заполните поля и нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep2_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep2_Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="gridS2_2" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Теперь перераспределим ресурсы в данном котуре. Для этого начиная со свободной клетки начнем в вершинах многоугольника ставить знаки "+" и "-" поочереди. В клетки знак "+" ставим мысленно.
+                                <LineBreak/><Image Height="150" Source="Resourses/Practice/practice_dobr_1.png" Margin="0,20,0,10" ></Image>    
+                                <LineBreak/>Находим минимальный по модулю отрицательный элемент в данном котуре : -1 и вычитаем его из каждого элемента контура, не забывая про знаки.
+                                <LineBreak/><LineBreak/>3,1: 
+                                <TextBox x:Name="txt2_a_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_a_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt2_a_1_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                
+                                <LineBreak/>2,1:
+                                <TextBox x:Name="txt2_a_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_a_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt2_a_2_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                
+                                <LineBreak/>2,2:
+                                <TextBox x:Name="txt2_a_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_a_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt2_a_3_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                
+                                <LineBreak/>3,2: 
+                                <TextBox x:Name="txt2_a_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_a_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt2_a_4_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/><LineBreak/>Заполните поля и нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep2_2Ok" Visibility="Collapsed" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep2_2Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep2_Theory" Foreground="#FF306D72" Click="HplStep2_Theory_Click_1" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep2_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <StackPanel>
+                                    <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                        Дан опорный план, найденный методом минимального элемента:
+                                        <LineBreak/><Image Height="140" Source="Resourses/r_1.png" Margin="0,10,0,10" ></Image>
+                                        <LineBreak/>Найден контур с отрицательной алгебраической суммой:
+                                        <LineBreak/>Для элемента Х₂₃ построим контур: Х₂₃, Х₂₁, Х₁₁, Х₁₃.
+                                        <LineBreak/>Третий контур: С₃ = 4 + (–3) + 6 + (–8) = –1.
+                                        <LineBreak/><Image Height="150" Source="Resourses/r_3.png" Margin="0,10,0,10" ></Image>
+                                        <LineBreak/>Назначения в опорном плане по третьему контуру таковы (объемы указаны с сохранением знаков при определении алгебраической суммы):
+                                        <LineBreak/><Image Height="150" Source="Resourses/Practice/practice_r_1.png" Margin="0,20,0,10" ></Image>
+                                        <LineBreak/>Чтобы перераспределить объемы перевозок между вершинами, нужно руководствоваться следующим правилом:
+                                        <LineBreak/><LineBreak/>Самый маленький по модулю объем отрицательных поставок алгебраически вычитается из всех вершин.
+                                        <LineBreak/>В нашем случае самый маленький по модулю элемент : -6. Вычетаем его из всех элементов, при этом не забываем про знаки!
+                                        <LineBreak/><LineBreak/>0 - (-6) = 0 + 6 = 6
+                                        <LineBreak/>-8 - (-6) = -8 + 6 = -2
+                                        <LineBreak/>2 - (-6) = 2 + 6 = 8
+                                        <LineBreak/>-6 - (-6) = -6 + 6 = 0
+                                        <LineBreak/><LineBreak/>Теперь полученные числа без знаков "-" записываем в опорный план.
+                                        <LineBreak/><Image Source="Resourses/r_4.png" Margin="0,10,0,0" Height="150"/>
+                                        <LineBreak/>
+                                    </TextBlock>
+                                    
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep2_1" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 1
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Отлично, вы верно перераспределили ресурсы! Теперь у нас получился новый опорный план, который мы дальше будем использовать в качестве опорного плана. (См. в левой части экрана)
+                            </TextBlock>
+                            <Button x:Name="btnStep2_1_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep2_1_Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                
+                <Grid x:Name="txtStep3" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 2
+                            </TextBlock>
+                            <TextBlock x:Name="gridStep3_Kontur" FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                Примем за ноль потенциал первой строки U₁ = 0.
+                                <LineBreak/>
+                                Потенциал первого столбца: V₁ = C₁₁ - U₁ =
+                                <TextBox x:Name="txt_2a_1_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_2a_1_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_2a_1_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Потенциал третьей строки: U₃ = C₃₁ - V₁ =
+                                <TextBox x:Name="txt_2a_2_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_2a_2_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_2a_2_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                
+                                <LineBreak/>Потенциал второго столбца: V₂ = C₃₂ - U₃ = 
+                                <TextBox x:Name="txt_2a_3_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_2a_3_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_2a_3_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Потенциал третьей строки: U₂ = C₂₂ - V₂ = 
+                                <TextBox x:Name="txt_2a_4_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_2a_4_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_2a_4_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Потенциал третьего столбца: V₃ = C₃₃ - U₃ =
+                                <TextBox x:Name="txt_2a_5_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_2a_5_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_2a_5_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Потенциал четвертого столбца:V₄ = C₃₄ - U₃ =
+                                <TextBox x:Name="txt_2a_6_1" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt_2a_6_2" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt_2a_6_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+
+                            </TextBlock>
+                            <Button x:Name="btnStep3Ok" Width="100" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="20" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep3Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock x:Name="gridStep3_Algebra" Visibility="Collapsed" FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                Для свободных клеток опорного плана вычисляем оценки по формуле uᵢ + vⱼ - cᵢⱼ ≤ 0.
+                                <LineBreak/>
+                                Клетка 1,2: u₁ + v₂ - с₁₂ = 
+                                  
+                                <TextBox x:Name="txt2_1_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt2_1_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_1_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt2_1_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Клетка 1,3: u₁ + v₃ - с₁₃ = 
+
+                                <TextBox x:Name="txt2_2_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt2_2_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_2_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt2_2_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Клетка 1,4: u₁ + v₄ - с₁₄ = 
+                                
+                                <TextBox x:Name="txt2_3_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt2_3_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_3_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt2_3_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Клетка 2,1: u₂ + v₁ - с₂₁ = 
+                                
+                                <TextBox x:Name="txt2_4_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt2_4_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_4_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt2_4_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Клетка 2,3: u₂ + v₃ - с₂₃ = 
+                                
+                                <TextBox x:Name="txt2_5_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt2_5_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_5_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt2_5_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                <LineBreak/>Клетка 2,4: u₂ + v₄ - с₂₄ = 
+                                
+                                <TextBox x:Name="txt2_6_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁺
+                                <TextBox x:Name="txt2_6_3" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁻
+                                <TextBox x:Name="txt2_6_4" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                                ⁼
+                                <TextBox x:Name="txt2_6_5" FontFamily="Sans" FontSize="20" Margin="0,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="40" PreviewTextInput="grid_PreviewTextInput"/>
+                            </TextBlock>
+                            <Button x:Name="btnStep3_1Ok" Visibility="Collapsed" Width="100" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="20" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep3_1Ok_Click">
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep3Theory" Foreground="#FF306D72" Click="HplStep3Theory_Click"  >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep3Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Дана матрица стоимостей:
+                                    <LineBreak/><Image Height="120" Source="Resourses/4-2.png" Margin="0,10,0,10" ></Image>
+                                    <LineBreak/>Дан опорный план, найденный методом «северо-западного» угла:
+                                    <LineBreak/><LineBreak/><Image Source="Resourses/p_1.png" Margin="0,0" Height="150"/>
+                                    <LineBreak/><LineBreak/>Базисные клетки опорного плана – а₁₁, а₁₂, а₂₂, а₂₃, а₃₃, а₃₄; свободные – а₁₃, а₁₄, а₂₁, а₂₄, а₃₁, а₃₂.
+                                    <LineBreak/><LineBreak/>Примем за ноль потенциал первой строки u₁ = 0.
+                                    <LineBreak/><LineBreak/>Тогда v₁ = c₁₁ - u₁ = 6 – 0 = 6.
+                                    <LineBreak/><LineBreak/>Далее выбираем те базисные клетки, для которых уже имеется один потенциал (или строки или столбца), и определяем следующий потенциал.
+                                    <LineBreak/><LineBreak/>Для базисной клетки а₁₂ известен потенциал первой строки u₁, поэтому мы можем определить потенциал второго столбца: v₂ = c₁₂ - u₁ = 5 – 0 = 5.
+                                    <LineBreak/><LineBreak/>Аналогично выполним расчет оставшихся потенциалов:
+                                    <LineBreak/><LineBreak/>Потенциал второй строки: u₂ = c₂₂ - v₂ = 6 – 5 = 1
+                                    <LineBreak/>Потенциал третьего столбца: v₃ = c₂₃ - u₂ = 4 – 1 = 3
+                                    <LineBreak/>Потенциал третьей строки: u₃ = c₃₃ - v₃ = 3 – 3 = 0
+                                    <LineBreak/>Потенциал четвертого столбца: v₄ = c₃₄ - u₃ = 6 – 0 = 6
+                                    <LineBreak/><LineBreak/>
+
+                                    <Image Source="Resourses/p_2.png" Margin="0,0" Height="200"/>
+                                    <LineBreak/><LineBreak/>Для свободных клеток вычисляем оценки по формуле uᵢ + vⱼ - cᵢⱼ ≤ 0.
+                                    <LineBreak/><LineBreak/>Клетка 1,3: u₁ + v₃ - с₁₃ = 0 + 3 – 8 = -5; -5 ≤ 0 
+                                    <LineBreak/>Клетка 1,4: u₁ + v₄ - с₁₄ = 0 + 6 – 7 = -1; -1 ≤ 0
+                                    <LineBreak/>Клетка 2,1: u₂ + v₁ - с₂₁ = 1 + 6 – 3 = 4; 4 ≤ 0; не выполняется
+                                    <LineBreak/>Клетка 2,4: u₂ + v₄ - с₂₄ = 1 + 6 – 2 = 5; 5 ≤ 0; не выполняется
+                                    <LineBreak/>Клетка 3,1: u₃ + v₁ - с₃₁ = 0 + 6 – 9 = -3; -3 ≤ 0
+                                    <LineBreak/>Клетка 3,2: u₃ + v₂ - с₃₂ = 0 + 5 – 1 = 4; 4 ≤ 0; не выполняется
+                                    <LineBreak/><LineBreak/>
+
+                                    <Image Source="Resourses/p_3.png" Margin="0,0" Height="200"/>
+                                    <LineBreak/>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+
+                <Grid x:Name="txtStep6" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 2
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Полученный опорный план оптимален, так как все оценки не положительны! Транспортная задача практически решена. Вы можете перейти к последнему шагу, для этого нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep6_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep6_Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep7" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 3
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                На последенм шаге нам нужно рассчитать стоимость данной перевозки. 
+                                <LineBreak/><LineBreak/>Стоимость перевозки равна 
+                                <TextBox x:Name="txtS7" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="gridAnswer_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/><LineBreak/>Заполните поле и нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep7_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep7_Ok_Click" >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep7_Theory" Foreground="#FF306D72" Click="HplStep7_Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep7_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <StackPanel>
+                                    <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                        Чтобы рассчитать стоимость перевозки нужно попарно перемножить ячейки из матрицы перевозки (оптимальный план) и матрицы стоимостей перевозки, а затем сложить полученные числа.
+                                        <LineBreak/><Image Height="400" Source="Resourses/Practice/practice_r_8.png" Margin="0,20,0,10" ></Image>
+                                        
+                                    </TextBlock>
+                                    <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">      
+                                        C = Х₁₁·С₁₁ + Х₁₂·С₁₂ + Х₂₂·С₂₂ + Х₂₃·С₂₃ + Х₃₃·С₃₃ + Х₃₄·С₃₄ = 10·6 + 4·5 + 10·6 + 2·4 + 4·3 + 4·6 = 60 + 20 + 60 + 8 + 12 + 24 = 184
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+            
+        </Grid>
+    </Grid>
+</Window>

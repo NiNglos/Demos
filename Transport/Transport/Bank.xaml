@@ -1,0 +1,500 @@
+﻿<Window x:Class="Transport.Bank"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Transport"
+        mc:Ignorable="d"
+        Title="Банк заданий" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Background="#FFE42525">
+    <Grid Background="#FFFFF3DA">
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="70*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <StackPanel Background="#FF959595">
+                    <TextBlock FontFamily="Sans" FontSize="36" Foreground="#FFFFFEFE" TextDecorations="{x:Null}" HorizontalAlignment="Center"  TextWrapping="Wrap" Margin="98,30,100,20" Width="160">
+                        Добавить задание:
+                    </TextBlock>
+                    <Button x:Name="btnEx_1_2"  Height="90" FontFamily="Sans" FontSize="24" BorderThickness="1" Margin="30,0,0,0" Click="btnEx_1_2_Click" Background="#FFBBBBBB">
+                        <TextBlock FontFamily="Sans" Foreground="White" TextAlignment="Center">
+                            + Задание 1, 2
+                            <LineBreak/>(с одним вариантом ответа)
+                        </TextBlock>
+                    </Button>
+                    <Button x:Name="btnEx_3"  Height="90" FontFamily="Sans" FontSize="24" BorderThickness="1" Margin="30,10,0,0" Click="btnEx_3_Click" Background="#FFBBBBBB">
+                        <TextBlock FontFamily="Sans" Foreground="White" TextAlignment="Center">
+                            + Задание 3
+                            <LineBreak/>(с множественным выбором)
+                        </TextBlock>
+                    </Button>
+                    <Button FontFamily="Sans" FontSize="30" Height="108" Width="150" Margin="0,50,100,50" HorizontalAlignment="Right" Click="Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resourses/back.png"/>
+                        </Button.Background>
+                    </Button>
+                    <!--<Button x:Name="btnEx_4"  Height="90" FontFamily="Sans" FontSize="24" BorderThickness="1"  Margin="30,10,0,0" Click="btnEx_4_Click" Background="#FFBBBBBB">
+                        <TextBlock FontFamily="Sans" Foreground="White" TextAlignment="Center">
+                            + Задание 4
+                            <LineBreak/>(с письменным ответом)
+                        </TextBlock>
+                    </Button>
+                    <Button x:Name="btnEx_5_6"  Height="120" FontFamily="Sans" FontSize="24" BorderThickness="1" Margin="30,10,0,0" Click="btnEx_5_6_Click" Background="#FFBBBBBB">
+                        <TextBlock FontFamily="Sans" Foreground="White" TextAlignment="Center" TextWrapping="Wrap">
+                            + Задание 5, 6
+                            <LineBreak/>(сбалансирована ли задача?)(сбалансировать задачу)
+                        </TextBlock>
+                    </Button>
+
+                    <Button x:Name="btnEx_7_8"  Height="150" FontFamily="Sans" FontSize="24" BorderThickness="1" Margin="30,10,0,0" Click="btnEx_7_8_Click" Background="#FFBBBBBB">
+                        <TextBlock FontFamily="Sans" Foreground="White" TextAlignment="Center" TextWrapping="Wrap">
+                            + Задание 7, 8
+                            <LineBreak/>(решить задачу методом 
+                            <LineBreak/>"северо-западного" угла, 
+                            методом минимального элемента)
+                        </TextBlock>
+                    </Button>-->
+                    <!--<Button FontFamily="Sans" FontSize="30" Height="106" Width="170" Margin="0,45,80,50" HorizontalAlignment="Right" Click="Button_Click" Foreground="White">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resourses/back.png"/>
+                        </Button.Background>
+                    </Button>-->
+                    <!--<Button FontFamily="Sans" FontSize="30" Height="106" Width="170" Margin="0,70,80,50" HorizontalAlignment="Right" Click="Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resourses/back.png"/>
+                        </Button.Background>
+                    </Button>-->
+                    <!--<Button FontFamily="Sans" FontSize="30" Height="106" Width="170" Margin="0,70,80,50" HorizontalAlignment="Right" Click="Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resourses/back.png"/>
+                        </Button.Background>
+                    </Button>-->
+                    <!--<Button FontFamily="Sans" FontSize="30" Height="106" Width="170" Margin="0,70,80,50" HorizontalAlignment="Right" Click="Button_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resourses/back.png"/>
+                        </Button.Background>
+                    </Button>-->
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid x:Name="gridEx_1_2" Visibility="Visible">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel.Background>
+                            <ImageBrush ImageSource="Resourses/fon.png"/>
+                        </StackPanel.Background>
+
+                        <TextBlock FontFamily="Sans" FontSize="36" Foreground="Black"  HorizontalAlignment="Center"  TextWrapping="Wrap" Margin="30,30,30,20">
+                            Задание 1, 2
+                        </TextBlock>
+                        <TextBlock FontFamily="Sans" FontSize="22" Foreground="White" TextAlignment="Justify" TextWrapping="Wrap" Margin="30,0,30,20">
+                            Вопросы в зависимости от темы попадут в разные таблицы. Таблица с заданием 1 содержит в себе вопросы, связанные с общими понятиями, в таблице 2 - с методами решения задач нелинейного программирования.
+                            <LineBreak/><LineBreak/>Заполните следующие поля:
+                            <LineBreak/><LineBreak/>Тема:
+                            <ComboBox x:Name="cmbEx_1_2_Topic" Margin="10,0,0,0" Width="200" SelectionChanged="cmbEx_1_2_Topic_SelectionChanged">
+                                <ComboBoxItem Content="Общие понятия"/>
+                                <ComboBoxItem Content="Формулировки моделей"/>
+                                <ComboBoxItem Content="Теоремы"/>
+                            </ComboBox>
+                        </TextBlock>
+                        <Grid Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="White"   TextWrapping="Wrap" Margin="30,0,10,0">
+                                Текст вопроса:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="txtEx_1_2_Text" Margin="0,0,30,0" FontFamily="Sans" FontSize="22" TextWrapping="Wrap">
+
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.ColumnSpan="2" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="White"   TextWrapping="Wrap" Margin="30,0,10,0">
+                                Вариант ответа №1:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="txtEx_1_2_Answer_1" Margin="0,0,30,0" FontFamily="Sans" FontSize="22" TextWrapping="Wrap">
+
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.ColumnSpan="2" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="White"   TextWrapping="Wrap" Margin="30,0,10,0">
+                                Вариант ответа №2:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="txtEx_1_2_Answer_2" Margin="0,0,30,0" FontFamily="Sans" FontSize="22" TextWrapping="Wrap">
+
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.ColumnSpan="2" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="White"   TextWrapping="Wrap" Margin="30,0,10,0">
+                                Вариант ответа №3:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="txtEx_1_2_Answer_3" Margin="0,0,30,0" FontFamily="Sans" FontSize="22" TextWrapping="Wrap">
+
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.ColumnSpan="2" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="White"   TextWrapping="Wrap" Margin="30,0,10,0">
+                                Вариант ответа №4:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="txtEx_1_2_Answer_4" Margin="0,0,30,0" FontFamily="Sans" FontSize="22" TextWrapping="Wrap">
+
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <TextBlock FontFamily="Sans" FontSize="22" Foreground="White"  TextWrapping="Wrap" Margin="30,0,30,20">
+                            <LineBreak/>Правильный вариант ответа №:
+                            <ComboBox x:Name="cmbEx_1_2_CorrectAnswer" Margin="10,0,0,0" Width="50">
+                                <ComboBoxItem Content="1"/>
+                                <ComboBoxItem Content="2"/>
+                                <ComboBoxItem Content="3"/>
+                                <ComboBoxItem Content="4"/>
+                            </ComboBox>
+                        </TextBlock>
+                        <Button x:Name="btnEx_1_2_OK" Width="220"  Height="70" FontFamily="Sans" FontSize="24" BorderThickness="1" Margin="30,10,30,0" Click="btnEx_1_2_OK_Click" Background="#FFBBBBBB">
+                            <TextBlock FontFamily="Sans" Foreground="White" TextAlignment="Center">
+                            Добавить вопрос
+                            </TextBlock>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="gridEx_3" Visibility="Collapsed">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel.Background>
+                            <ImageBrush ImageSource="Resourses/fon.png" Stretch="UniformToFill"/>
+                        </StackPanel.Background>
+
+                        <TextBlock FontFamily="Sans" FontSize="36" Foreground="Black"  HorizontalAlignment="Center"  TextWrapping="Wrap" Margin="30,30,30,20">
+                            Задание 3
+                        </TextBlock>
+                        <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"   TextAlignment="Justify" TextWrapping="Wrap" Margin="30,0,30,20">
+                            Заполните следующие поля:
+                        </TextBlock>
+                        <Grid Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"   TextWrapping="Wrap" Margin="30,0,10,0">
+                                Текст вопроса:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="txtEx_3_Text" Margin="0,0,30,0" FontFamily="Sans" FontSize="22" TextWrapping="Wrap">
+
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.ColumnSpan="2" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"   TextWrapping="Wrap" Margin="30,0,10,0">
+                                Вариант ответа №1:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="txtEx_3_Answer_1" Margin="0,0,30,0" FontFamily="Sans" FontSize="22" TextWrapping="Wrap">
+
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.ColumnSpan="2" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"   TextWrapping="Wrap" Margin="30,0,10,0">
+                                Вариант ответа №2:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="txtEx_3_Answer_2" Margin="0,0,30,0" FontFamily="Sans" FontSize="22" TextWrapping="Wrap">
+
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.ColumnSpan="2" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"   TextWrapping="Wrap" Margin="30,0,10,0">
+                                Вариант ответа №3:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="txtEx_3_Answer_3" Margin="0,0,30,0" FontFamily="Sans" FontSize="22" TextWrapping="Wrap">
+
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.ColumnSpan="2" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"   TextWrapping="Wrap" Margin="30,0,10,0">
+                                Вариант ответа №4:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="txtEx_3_Answer_4" Margin="0,0,30,0" FontFamily="Sans" FontSize="22" TextWrapping="Wrap">
+
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.ColumnSpan="2" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"   TextWrapping="Wrap" Margin="30,0,10,0">
+                                Вариант ответа №5:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="txtEx_3_Answer_5" Margin="0,0,30,0" FontFamily="Sans" FontSize="22" TextWrapping="Wrap">
+
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.ColumnSpan="2" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"   TextWrapping="Wrap" Margin="30,0,10,0">
+                                Вариант ответа №6:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="txtEx_3_Answer_6" Margin="0,0,30,0" FontFamily="Sans" FontSize="22" TextWrapping="Wrap">
+
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.ColumnSpan="2" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"  TextWrapping="Wrap" Margin="30,0,0,0">
+                                    Правильные варианты ответа №:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1" >
+                                <StackPanel Orientation="Horizontal">
+                                    <CheckBox x:Name="chk_1" Content="1" FontFamily="Sans" FontSize="22"/>
+                                    <CheckBox x:Name="chk_2" Content="2" FontFamily="Sans" FontSize="22" Margin="10,0,0,0"/>
+                                    <CheckBox x:Name="chk_3" Content="3" FontFamily="Sans" FontSize="22" Margin="10,0,0,0"/>
+                                    <CheckBox x:Name="chk_4" Content="4" FontFamily="Sans" FontSize="22" Margin="10,0,0,0"/>
+                                    <CheckBox x:Name="chk_5" Content="5" FontFamily="Sans" FontSize="22" Margin="10,0,0,0"/>
+                                    <CheckBox x:Name="chk_6" Content="6" FontFamily="Sans" FontSize="22" Margin="10,0,29.7,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+
+                        <Button x:Name="btnEx_3_OK" Width="220"  Height="70" FontFamily="Sans" FontSize="24" BorderThickness="1" Margin="30,20,30,0" Click="btnEx_3_OK_Click" Foreground="White">
+                            <Button.Background>
+                                <ImageBrush/>
+                            </Button.Background>
+
+
+                            <TextBlock FontFamily="Sans" Foreground="White" TextAlignment="Center">
+                            Добавить вопрос
+                            </TextBlock>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="gridEx_4" Visibility="Collapsed">
+                    <StackPanel Orientation="Vertical">
+
+                        <TextBlock FontFamily="Sans" FontSize="36" Foreground="White"  HorizontalAlignment="Center"  TextWrapping="Wrap" Margin="30,30,30,20">
+                            Задание 4
+                        </TextBlock>
+                        <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"   TextAlignment="Justify" TextWrapping="Wrap" Margin="30,0,30,20">
+                            Заполните следующие поля:
+                        </TextBlock>
+                        <Grid Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"   TextWrapping="Wrap" Margin="30,0,10,0">
+                                Текст вопроса:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="txtEx_4_Text" Margin="0,0,30,0" FontFamily="Sans" FontSize="22" TextWrapping="Wrap">
+
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.ColumnSpan="2" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"   TextWrapping="Wrap" Margin="30,0,10,0">
+                                Вариации ответа:
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="txtEx_4_Answer" Margin="0,0,30,0" FontFamily="Sans" FontSize="22" TextWrapping="Wrap">
+
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                        <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"   TextWrapping="Wrap" Margin="30,10,30,0">
+                                Напишите через " ;" все возможные вариации ответа.
+                        </TextBlock>
+                        <Button x:Name="btnEx_4_OK" Width="220"  Height="70" FontFamily="Sans" FontSize="24" BorderThickness="1" BorderBrush="White" Margin="30,40,30,0" Click="btnEx_4_OK_Click" >
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFFFD597" Offset="0"/>
+                                    <GradientStop Color="#FFFFF3DA" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <TextBlock FontFamily="Sans" Foreground="White" TextAlignment="Center">
+                            Добавить вопрос
+                            </TextBlock>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="gridEx_5_6" Visibility="Collapsed">
+                    <StackPanel Orientation="Vertical">
+
+                        <TextBlock FontFamily="Sans" FontSize="36" Foreground="White"  HorizontalAlignment="Center"  TextWrapping="Wrap" Margin="30,30,30,20">
+                            Задание 5, 6
+                        </TextBlock>
+                        <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"   TextAlignment="Justify" TextWrapping="Wrap" Margin="30,0,30,20">
+                            Заполните матрицу стоимостей перевозки:
+                            <LineBreak/><LineBreak/>Внимание! Матрица должна быть несбалансированной!
+                        </TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="btnAddRow" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="30,0,0,0" Background="#FFFFE4AD" BorderBrush="#FFFDB729" MinWidth="180" Click="btnAddRow_Click" >
+                                + Добавить строку
+                            </Button>
+                            <Button x:Name="btnAddColumn" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="30,0" Background="#FFFFE4AD" BorderBrush="#FFFDB729" MinWidth="190" Click="btnAddColumn_Click" >
+                                + Добавить столбец
+                            </Button>
+
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,30">
+                            <Button x:Name="btnDeleteRow" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="30,0,0,0" Background="#FFFFE4AD" BorderBrush="#FFFDB729" MinWidth="180" Click="btnDeleteRow_Click">
+                                – Удалить строку
+                            </Button>
+                            <Button x:Name="btnDeleteColumn" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="30,0" Background="#FFFFE4AD" BorderBrush="#FFFDB729" MinWidth="190" Click="btnDeleteColumn_Click" >
+                                – Удалить столбец
+                            </Button>
+                        </StackPanel>
+                        <DataGrid x:Name="gridTable_5_6" Margin="30,0" HeadersVisibility="None" FontFamily="Times New Roman" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput">
+
+                        </DataGrid>
+                        <Button x:Name="btnEx_5_OK" Width="220"  Height="70" FontFamily="Sans" FontSize="24" BorderThickness="1" BorderBrush="White" Margin="30,40,30,0" Click="btnEx_5_OK_Click" >
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFFFD597" Offset="0"/>
+                                    <GradientStop Color="#FFFFF3DA" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <TextBlock FontFamily="Sans" Foreground="White" TextAlignment="Center">
+                            Добавить вопрос
+                            </TextBlock>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="gridEx_7_8" Visibility="Collapsed">
+                    <StackPanel Orientation="Vertical">
+
+                        <TextBlock FontFamily="Sans" FontSize="36" Foreground="White"  HorizontalAlignment="Center"  TextWrapping="Wrap" Margin="30,30,30,20">
+                            Задание 7, 8
+                        </TextBlock>
+                        <TextBlock FontFamily="Sans" FontSize="22" Foreground="Black"   TextAlignment="Justify" TextWrapping="Wrap" Margin="30,0,30,20">
+                            Заполните матрицу стоимостей перевозки:
+                        </TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="btnAddRow1" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="30,0,0,0" Background="#FFFFE4AD" BorderBrush="#FFFDB729" MinWidth="180" Click="btnAddRow1_Click" >
+                                + Добавить строку
+                            </Button>
+                            <Button x:Name="btnAddColumn1" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="30,0" Background="#FFFFE4AD" BorderBrush="#FFFDB729" MinWidth="190" Click="btnAddColumn1_Click" >
+                                + Добавить столбец
+                            </Button>
+
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,30">
+                            <Button x:Name="btnDeleteRow1" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="30,0,0,0" Background="#FFFFE4AD" BorderBrush="#FFFDB729" MinWidth="180" Click="btnDeleteRow1_Click">
+                                – Удалить строку
+                            </Button>
+                            <Button x:Name="btnDeleteColumn1" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Left" Margin="30,0" Background="#FFFFE4AD" BorderBrush="#FFFDB729" MinWidth="190" Click="btnDeleteColumn1_Click" >
+                                – Удалить столбец
+                            </Button>
+                        </StackPanel>
+                        <DataGrid x:Name="gridTable_7_8" Margin="30,0" HeadersVisibility="None" FontFamily="Times New Roman" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput">
+
+                        </DataGrid>
+                        <Button x:Name="btnEx_7_8_OK" Width="220"  Height="70" FontFamily="Sans" FontSize="24" BorderThickness="1" BorderBrush="White" Margin="30,40,30,0" Click="btnEx_7_8_OK_Click" >
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFFFD597" Offset="0"/>
+                                    <GradientStop Color="#FFFFF3DA" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <TextBlock FontFamily="Sans" Foreground="White" TextAlignment="Center">
+                            Добавить вопрос
+                            </TextBlock>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,331 @@
+﻿<Window x:Class="Transport.Practice_Min"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Transport"
+        mc:Ignorable="d"
+        Title="Практика. Метод минимального элемента" Height="900" Width="1600" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFFFF3DA">
+
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="65*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Border BorderBrush="White" BorderThickness="0,0,1,0"/>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="Resourses/bgrr.jpg" Stretch="UniformToFill"/>
+                    </StackPanel.Background>
+                    <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="60,50,60,0">
+                          Метод множителей Лагранжа
+                    </TextBlock>
+                    <TextBlock FontSize="22" FontFamily="Sans" Margin="60,30,30,0" TextWrapping="Wrap">
+                            Дана функция:
+                    </TextBlock>
+                    <Image Height="50" Source="Resourses/Practice/lagr1.png" Margin="0,10,0,10" ></Image>
+                    <TextBlock FontSize="22" FontFamily="Sans" Margin="60,30,30,0" TextWrapping="Wrap">
+                            При условии :
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="50" Source="Resourses/Practice/lagr2.png" Margin="200,10,0,10" ></Image>
+                        <DataGrid x:Name="gridResourses" Margin="0,20,30,0" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                        </DataGrid>
+                    </StackPanel>
+                    <DataGrid x:Name="gridNeeds" Margin="60,20,30,70" HeadersVisibility="None" FontFamily="Sans" FontSize="20" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" MinColumnWidth="50" MaxColumnWidth="70" CanUserAddRows="False" HorizontalAlignment="Left" ColumnWidth="50" PreviewTextInput="gridAnswer_PreviewTextInput" IsEnabled="False">
+
+                    </DataGrid>
+                    <Button FontFamily="Sans" FontSize="30" Height="60" Width="331" Foreground="White"  Content="← В главное меню" Margin="60,30,0,50" HorizontalAlignment="Left" Click="Button_Click" >
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+
+                    </Button>
+
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid x:Name="txtStep1_1" Visibility="Visible">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel.Background>
+                                <ImageBrush ImageSource="Resourses/fon.png" Stretch="UniformToFill"/>
+                            </StackPanel.Background>
+
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 1
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify"><Run Text="Решение транспорт"/><LineBreak/><LineBreak/><Run Text="Заполните следующие поля и нажмите ОК. Если у вас возникли трудности, ознакомьтесь с Теоретической справкой."/><LineBreak/><Run Text="Точка максимума функции    : "/><InlineUIContainer>
+                                    <TextBox x:Name="txtNeeds" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                </InlineUIContainer><InlineUIContainer>
+                                    <TextBox x:Name="txtNeeds_Copy" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput"/>
+                                </InlineUIContainer></TextBlock>
+                            <Button x:Name="btnStep1Ok" Width="100" Height="50" FontFamily="Sans" FontSize="20" BorderThickness="1" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep1Ok_Click" >
+                                <Button.Background>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                                </Button.Background>
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep1Theory" Foreground="ForestGreen" Click="HplStep1Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep1Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                    12312312312
+                                    <LineBreak/><LineBreak/>131231239
+
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep1_2" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 1
+                            </TextBlock>
+                            <TextBlock x:Name="txt_s1" FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Верно рассчитав общее количество потребностей и запасов, теперь вы можете ответить на следующий вопрос: является ли данная транспортная задача сбалансированной?
+                            </TextBlock>
+                            <RadioButton x:Name="rbt1" Margin="30,10,30,0" FontFamily="Sans" FontSize="22">
+                                Нет, не является
+                            </RadioButton>
+                            <RadioButton x:Name="rbt2" Margin="30,10,30,0" FontFamily="Sans" FontSize="22">
+                                Да, является
+                            </RadioButton>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                Если вы испытываете трудности при выборе ответа, воспользуйтесь Теоретической справкой. После того как ответите, нажмите кнопку «Перейти к следующему шагу».
+                            </TextBlock>
+                            <Button x:Name="btnStep1_1Ok" Width="250" Height="50" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,20,60,0" HorizontalAlignment="Left" Click="btnStep1_1Ok_Click"  >
+                                <Button.Background>
+                                    <ImageBrush/>
+                                </Button.Background>
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    Перейти к следующему шагу
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep1_2_Theory" Foreground="#FF306D72" Click="HplStep1_2_Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep1_2_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Сбалансированной транспортная задача является в том случае, если количество запасов продукции равно суммарной потребности в ней.
+                                    <LineBreak/><LineBreak/>Несбалансированной же задача называется, если количество запасов продукции не равно суммарной потребности в ней.
+                                    <LineBreak/><LineBreak/>Проще говоря если высчитанное вами общее количество запасов равно общему количеству потребностей, то данная транспортная задача сбалансирована, иначе несбалансированная.
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep2" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 2
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Так как наша задача сбалансирована, то нам не нужно проводить процедуру закрытия задачи, это значит, что мы можем перейти непосредственно к решению задачи методом минимального элемента.
+                                Начинаем строить опорный план.
+                                <LineBreak/><LineBreak/>Ячейкой, которую мы начнем заполнять первой, будет являться та ячейка в матрице стоимостей перевозки, в которой стоимость перевозки будет самая маленькая.
+                                <LineBreak/><LineBreak/>Мы будем рассматривать ячейку Х 
+                                <TextBox x:Name="txtI_S2" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <TextBox x:Name="txtJ_S2" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>Запасы в этой ячейке равны 
+                                <TextBox x:Name="txtResourses_S2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>Потребности в этой ячейке равны 
+                                <TextBox x:Name="txtNeeds_S2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>Количество ресурсов, которые мы распределим в эту ячейку: 
+                                <TextBox x:Name="txtAll_S2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/><LineBreak/><LineBreak/>Заполните все поля и нажмите ОК.Если у вас возникли трудности, обратитесь к Теоретической справки.
+                            </TextBlock>
+                            <Button x:Name="btnStep2_Ok" Width="120" Height="50" Background="#FFF9E4B6" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep2_Ok_Click"  >
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    <TextBlock.Background>
+                                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                                    </TextBlock.Background>
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep2_Theory" Foreground="#FF306D72" Click="HplStep2_Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep2_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Чтобы найти самую маленькую стоимость перевозки нужно в матрице стоимостей перевозки среди всех стоимостей отыскать наименьшую. 
+                                    <LineBreak/><Image Height="205" Source="Resourses/Practice/practice_min_1.png" Margin="0,20,0,10" ></Image>
+                                    <LineBreak/><LineBreak/>Для того, чтобы распределить ресурсы для ячейки, мы должны понять, какими запасами обладает поставщик и какие потребности потребителя надо удовлетворить.
+                                    <LineBreak/><Image Height="250" Source="Resourses/Practice/practice_sz_2.png" Margin="0,20,0,10" ></Image>
+                                    <LineBreak/><LineBreak/>Для того, чтобы распределить ресурсы для ячейки, мы должны назначить такое максимально возможное количество ресурсов, равное минимальному числу из 
+                                    потребности и запаса. Ведь мы не можем назначить ресурсов больше, чем надо потребителю или больше, чем есть у поставщика. Поэтому из данных чисел, количество запасов и 
+                                    количество потребностей в данной ячейке, мы выбираем минимальное.
+                                    <LineBreak/><Image Height="250" Source="Resourses/Practice/practice_sz_3.png" Margin="0,20,0,10" ></Image>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep2_1" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 2
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Вы верно рассчитали все параметры, программа автоматически записывает ответ в матрицу перевозок. В левой части окна мы можете заметить, что ресурс назначен. 
+                                <LineBreak/><LineBreak/>Распределив ресурсы, мы должны не забывать, что теперь у нас у поставщика и потребителя для данной ячейки изменилось количество запасов и потребностей соответственно. Оставшееся количество для удобства записано слева и снизу от матрицы перевозки. 
+                                <LineBreak/><LineBreak/>Каждый раз распределяя ресурсы нужно не забывать, что для каких-то поставщиков или потребителей количество запасов или потребностей может стать меньше, чем было в самом начале. 
+                                <LineBreak/><LineBreak/>Нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep2_1_Ok" Width="120" Height="50" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep2_1_Ok_Click"  >
+                                <Button.Background>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                                </Button.Background>
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep2_2" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 2
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Теперь мы будем рассматривать ячейку Х 
+                                <TextBox x:Name="txtI_S2_2" FontFamily="Sans" FontSize="12" Margin="5,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <TextBox x:Name="txtJ_S2_2" FontFamily="Sans" FontSize="12" Margin="0,0,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="20" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/><LineBreak/>Запасы в этой ячейке равны
+                                <TextBox x:Name="txtResourses_S2_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>Потребности в этой ячейке равны 
+                                <TextBox x:Name="txtNeeds_S2_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/>Количество ресурсов, которые мы распределим в эту ячейку: 
+                                <TextBox x:Name="txtAll_S2_2" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/><LineBreak/><LineBreak/>Заполните все поля и нажмите ОК. Если у вас возникли трудности, обратитесь к Теоретической справки.
+                            </TextBlock>
+                            <Button x:Name="btnStep2_2_Ok" Width="120" Height="50" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep2_2_Ok_Click" >
+                                <Button.Background>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                                </Button.Background>
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep2_2_Theory" Foreground="#FF306D72" Click="HplStep2_2_Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep2_2_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">
+                                    Чтобы найти самую маленькую стоимость перевозки нужно в матрице стоимостей перевозки среди всех стоимостей отыскать наименьшую. 
+                                    <LineBreak/><Image Height="205" Source="Resourses/Practice/practice_min_1.png" Margin="0,20,0,10" ></Image>
+                                    <LineBreak/><LineBreak/>Для того, чтобы распределить ресурсы для ячейки, мы должны понять, какими запасами обладает поставщик и какие потребности потребителя надо удовлетворить.
+                                    <LineBreak/><Image Height="250" Source="Resourses/Practice/practice_sz_2.png" Margin="0,20,0,10" ></Image>
+                                    <LineBreak/><LineBreak/>Для того, чтобы распределить ресурсы для ячейки, мы должны назначить такое максимально возможное количество ресурсов, равное минимальному числу из 
+                                    потребности и запаса. Ведь мы не можем назначить ресурсов больше, чем надо потребителю или больше, чем есть у поставщика. Поэтому из данных чисел, количество запасов и 
+                                    количество потребностей в данной ячейке, мы выбираем минимальное.
+                                    <LineBreak/><Image Height="250" Source="Resourses/Practice/practice_sz_3.png" Margin="0,20,0,10" ></Image>
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep2_3" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 2
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                Отлично, вы верно распределили все ресурсы! Транспортная задача практически решена. Вы можете перейти к последнему шагу, для этого нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep2_3_Ok" Width="120" Height="50" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep2_3_Ok_Click"  >
+                                <Button.Background>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                                </Button.Background>
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid x:Name="txtStep3" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" FontFamily="Sans" Foreground="White" Margin="30,50,60,0">
+                                Шаг 3
+                            </TextBlock>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,30,30,20" TextWrapping="Wrap" TextAlignment="Justify">
+                                На последенм шаге нам нужно рассчитать стоимость данной перевозки. 
+                                <LineBreak/><LineBreak/>Стоимость перевозки равна 
+                                <TextBox x:Name="txtS3" FontFamily="Sans" FontSize="20" Margin="10,10,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="70" PreviewTextInput="txtNeeds_PreviewTextInput">
+
+                                </TextBox>
+                                <LineBreak/><LineBreak/>Заполните поле и нажмите ОК.
+                            </TextBlock>
+                            <Button x:Name="btnStep3_Ok" Width="120" Height="50" FontFamily="Sans" FontSize="22" BorderThickness="1" BorderBrush="White" Margin="30,10,60,0" HorizontalAlignment="Left" Click="btnStep3_Ok_Click"  >
+                                <Button.Background>
+                                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                                </Button.Background>
+                                <TextBlock FontFamily="Sans" Foreground="White"  Margin="0,0,0,0">
+                                    ОК
+                                </TextBlock>
+                            </Button>
+                            <TextBlock FontSize="22" FontFamily="Sans" Margin="30,50,60,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                <Hyperlink x:Name="HplStep3_Theory" Foreground="#FF306D72" Click="HplStep3_Theory_Click" >+ Теоретическая справка</Hyperlink>
+                            </TextBlock>
+                            <Grid x:Name="gridStep3_Theory" Visibility="Collapsed" Margin="30,10,30,30" >
+                                <Border BorderBrush="White" BorderThickness="1"/>
+                                <StackPanel>
+                                    <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,0" TextWrapping="Wrap" TextAlignment="Justify">
+                                        Чтобы рассчитать стоимость перевозки нужно попарно перемножить ячейки из матрицы перевозки (опорный план) и матрицы стоимостей перевозки, а затем сложить полученные числа.
+                                        <LineBreak/><Image Height="400" Source="Resourses/Practice/practice_sz_4.png" Margin="0,20,0,10" ></Image>
+
+                                    </TextBlock>
+                                    <TextBlock FontSize="22" FontFamily="Sans" Margin="30,10,30,10" TextWrapping="Wrap" TextAlignment="Justify">      
+                                        C = Х₁₁·С₁₁ + Х₁₂·С₁₂ + Х₂₂·С₂₂ + Х₂₃·С₂₃ + Х₃₃·С₃₃ + Х₃₄·С₃₄ = 10·6 + 4·5 + 10·6 + 2·4 + 4·3 + 4·6 = 60 + 20 + 60 + 8 + 12 + 24 = 184
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

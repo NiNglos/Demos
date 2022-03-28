@@ -1,0 +1,81 @@
+﻿<Window x:Class="Transport.Test2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Transport"
+        mc:Ignorable="d"
+        Title="Тест" Height="650" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFFFF3DA">
+        <Grid Height="80" VerticalAlignment="Top">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF686868" Offset="0"/>
+                    <GradientStop Color="#FF646161" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="731*"/>
+                <ColumnDefinition Width="61*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock FontFamily="Sans" FontSize="30" HorizontalAlignment="Center" Margin="310,20,249.421,20" >
+                    Задание №1
+            </TextBlock>
+        </Grid>
+        <Grid Margin="0,80,0,0">
+            <ScrollViewer>
+                <ScrollViewer.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="Resourses/fon.png"/>
+                </ScrollViewer.Background>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock x:Name="txtblQestion"  FontFamily="Times New Roman" FontSize="20" Margin="30,30,30,0" TextWrapping="Wrap" FontWeight="Bold">
+                            Вопрос:
+                    </TextBlock>
+                    <TextBlock FontFamily="Times New Roman" FontSize="20" Margin="30,10,30,0" TextWrapping="Wrap">
+                            <LineBreak/>
+                            Выберите 1 вариант ответа из предложенных:
+                            <LineBreak/>
+                    </TextBlock>
+                    <Grid>
+                        <StackPanel Orientation="Vertical">
+                            <RadioButton x:Name="rbt1" Margin="30,10,30,0" FontFamily="Times New Roman" FontSize="20">
+                                <RadioButton.Content>
+                                    <TextBlock x:Name="txtbl1" TextWrapping="Wrap">
+
+                                    </TextBlock>
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <RadioButton x:Name="rbt2" Margin="30,10,30,0" FontFamily="Times New Roman" FontSize="20">
+                                <RadioButton.Content>
+                                    <TextBlock x:Name="txtbl2" TextWrapping="Wrap">
+
+                                    </TextBlock>
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <RadioButton x:Name="rbt3" Margin="30,10,30,0" FontFamily="Times New Roman" FontSize="20">
+                                <RadioButton.Content>
+                                    <TextBlock x:Name="txtbl3" TextWrapping="Wrap">
+
+                                    </TextBlock>
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <RadioButton x:Name="rbt4" Margin="30,10,30,0" FontFamily="Times New Roman" FontSize="20">
+                                <RadioButton.Content>
+                                    <TextBlock x:Name="txtbl4" TextWrapping="Wrap">
+
+                                    </TextBlock>
+                                </RadioButton.Content>
+                            </RadioButton>
+                        </StackPanel>
+                    </Grid>
+                    <Button FontFamily="Sans" FontSize="30" Height="60" Width="220" Margin="271,40,271,0" Content="Продолжить" Click="Button_Click">
+                    </Button>
+                    <TextBlock>
+                            <LineBreak/><LineBreak/>
+                    </TextBlock>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
